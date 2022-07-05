@@ -8,7 +8,9 @@ const Home = () => {
   return (
     <motion.div className={styles.wrapper} variants={opacityVariants} initial='initial' animate='animate' exit='exit'>
       <HomeHeader />
-      <Trending />
+      <div className={styles.mediaContainer}>
+        <Trending />
+      </div>
     </motion.div>
   )
 }

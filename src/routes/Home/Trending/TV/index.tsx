@@ -1,23 +1,19 @@
-import Carousel from 'components/Carousel'
-import { useTVTrendings } from 'hooks/trendings'
-import { Suspense } from 'react'
-import TVItem from './TVItem'
+import { useSearchParams } from 'react-router-dom'
+import Today from './Today'
 
 interface IProps {
   inView: boolean
 }
 
 const TV = ({ inView }: IProps) => {
-  const { data } = useTVTrendings('day')
+  const [searchParams] = useSearchParams()
+  const time = searchParams.get('time') || 'day'
   if (!inView) return null
   return (
-    <Suspense fallback={<div>loading...</div>}>
-      <Carousel dragConstraints={450 * 20}>
-        {data?.results.map((tv) => (
-          <TVItem key={tv.id} tv={tv} />
-        ))}
-      </Carousel>
-    </Suspense>
+    <>
+      <Today inView={time === 'day'} />
+      <Today inView={time === 'week'} />
+    </>
   )
 }
 

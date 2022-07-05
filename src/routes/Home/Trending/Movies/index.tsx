@@ -1,25 +1,21 @@
-import Carousel from 'components/Carousel'
-import { useMovieTrendings } from 'hooks/trendings'
-import { Suspense, useMemo } from 'react'
-import MovieItem from './MovieItem'
+import { useSearchParams } from 'react-router-dom'
+import Today from './Today'
+import Week from './Week'
 
 interface IProps {
   inView: boolean
 }
 
 const Movies = ({ inView }: IProps) => {
-  const { data } = useMovieTrendings('day')
-
-  const MovieList = useMemo(
-    () => data?.results.map((movie) => <MovieItem key={movie.id} movie={movie} />),
-    [data?.results]
-  )
+  const [searchParams] = useSearchParams()
+  const time = searchParams.get('time') || 'day'
 
   if (!inView) return null
   return (
-    <Suspense fallback={<div>loading...</div>}>
-      <Carousel dragConstraints={450 * 20}>{MovieList}</Carousel>
-    </Suspense>
+    <>
+      <Today inView={time === 'day'} />
+      <Week inView={time === 'week'} />
+    </>
   )
 }
 

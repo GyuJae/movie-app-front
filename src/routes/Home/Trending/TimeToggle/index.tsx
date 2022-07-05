@@ -5,9 +5,10 @@ import styles from './timeToggle.module.scss'
 const TimeToggle = () => {
   const [searchParams, setSearchParams] = useSearchParams()
   const time = searchParams.get('time') || 'day'
+  const mediaType = searchParams.get('mediaType') || 'movie'
 
-  const handleClickDay = () => setSearchParams({ time: 'day' })
-  const handleClickWeek = () => setSearchParams({ time: 'week' })
+  const handleClickDay = () => setSearchParams({ time: 'day', mediaType })
+  const handleClickWeek = () => setSearchParams({ time: 'week', mediaType })
 
   return (
     <div className={styles.wrapper}>
