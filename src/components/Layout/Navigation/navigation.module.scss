@@ -1,0 +1,48 @@
+@use '/src/styles/constants/colors';
+@use '/src/styles/mixins/flexbox';
+
+nav.wrapper {
+  min-height: 100vh;
+  padding-top: 50px;
+  background-color: colors.$WEAKBLACK;
+
+  h3 {
+    padding-left: 10px;
+    margin-bottom: 10px;
+    color: colors.$GRAY7;
+  }
+
+  ul {
+    font-size: 16px;
+
+    li {
+      @include flexbox.flexbox(start,center);
+      column-gap: 10px;
+      width: 200px;
+      padding: 15px 10px;
+      color: colors.$GRAY7;
+
+      &.current {
+        color: colors.$WHITE;
+
+        svg {
+          fill: colors.$RED;
+        }
+      }
+
+      &:hover {
+        color: colors.$WHITE;
+        background-color: colors.$GRAY3;
+
+        svg {
+          fill: colors.$RED;
+        }
+      }
+
+      svg {
+        width: 20px;
+        fill: colors.$GRAY7;
+      }
+    }
+  }
+}

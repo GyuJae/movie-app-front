@@ -1,10 +1,11 @@
-import React from 'react'
 import { Outlet } from 'react-router-dom'
+import styles from './layout.module.scss'
+import Navigation from './Navigation'
 
 const Layout = () => {
   return (
-    <div>
-      <h1>Layout</h1>
+    <div className={styles.wrapper}>
+      <Navigation />
       <main>
         <Outlet />
       </main>
