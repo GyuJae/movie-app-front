@@ -7,4 +7,9 @@
   min-height: 100vh;
   color: colors.$WHITE;
   background-color: colors.$BLACK;
+
+  main {
+    width: 100%;
+    overflow: hidden;
+  }
 }

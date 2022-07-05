@@ -5,12 +5,26 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import Routes from './routes'
 import reportWebVitals from './reportWebVitals'
+import { QueryClient, QueryClientProvider } from 'react-query'
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: 1,
+      staleTime: 1000 * 60 * 10,
+      refetchOnWindowFocus: false,
+      suspense: true,
+    },
+  },
+})
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Routes />
+      <QueryClientProvider client={queryClient}>
+        <Routes />
+      </QueryClientProvider>
     </BrowserRouter>
   </React.StrictMode>
 )

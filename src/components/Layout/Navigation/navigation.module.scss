@@ -2,6 +2,7 @@
 @use '/src/styles/mixins/flexbox';
 
 nav.wrapper {
+  height: 100%;
   min-height: 100vh;
   padding-top: 50px;
   background-color: colors.$WEAKBLACK;
@@ -18,8 +19,8 @@ nav.wrapper {
     li {
       @include flexbox.flexbox(start,center);
       column-gap: 10px;
-      width: 200px;
-      padding: 15px 10px;
+      width: 220px;
+      padding: 15px;
       color: colors.$GRAY7;
 
       &.current {
