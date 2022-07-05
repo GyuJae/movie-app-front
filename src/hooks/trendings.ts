@@ -6,9 +6,18 @@ import { ITVResult } from 'types/tv'
 
 const services = new TrendingsService()
 
-export const useMovieTrendings = (time: 'day' | 'week') => {
-  return useQuery<IMovieResult, Error>(['trendins', 'movies', time], () => services.getMoviesTrendings(time))
+export const useMovieDayTrendings = () => {
+  return useQuery<IMovieResult, Error>(['trendins', 'movies', 'day'], () => services.getMoviesTrendings('day'))
 }
-export const useTVTrendings = (time: 'day' | 'week') => {
-  return useQuery<ITVResult, Error>(['trendins', 'tvs', time], () => services.getTVTrendings(time))
+
+export const useMovieWeekTrendings = () => {
+  return useQuery<IMovieResult, Error>(['trendins', 'movies', 'week'], () => services.getMoviesTrendings('week'))
+}
+
+export const useTVDayTrendings = () => {
+  return useQuery<ITVResult, Error>(['trendins', 'tvs', 'day'], () => services.getTVTrendings('day'))
+}
+
+export const useTVWeekTrendings = () => {
+  return useQuery<ITVResult, Error>(['trendins', 'tvs', 'week'], () => services.getTVTrendings('week'))
 }

@@ -10,9 +10,6 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      retry: 1,
-      staleTime: 1000 * 60 * 10,
-      refetchOnWindowFocus: false,
       suspense: true,
     },
   },
@@ -21,11 +18,11 @@ const queryClient = new QueryClient({
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
         <Routes />
-      </QueryClientProvider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </QueryClientProvider>
   </React.StrictMode>
 )
 

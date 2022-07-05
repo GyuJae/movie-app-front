@@ -1,14 +1,17 @@
 import { AnimatePresence } from 'framer-motion'
 import { useSearchParams } from 'react-router-dom'
 import { TMediaType } from 'types/trending'
-import Movies from './Movies'
+import MoviesToday from './Movies/Today'
+import MovieWeek from './Movies/Week'
 import TimeToggle from './TimeToggle'
 import styles from './trending.module.scss'
-import TV from './TV'
+import TVToday from './TV/Today'
+import TVWeek from './TV/Week'
 
 const Trending = () => {
   const [searchParams] = useSearchParams()
   const mediaType = (searchParams.get('mediaType') || 'movie') as TMediaType
+  const time = searchParams.get('time') || 'day'
 
   return (
     <div className={styles.wrapper}>
@@ -17,8 +20,10 @@ const Trending = () => {
         <TimeToggle />
       </div>
       <AnimatePresence>
-        <Movies inView={mediaType === 'movie'} />
-        <TV inView={mediaType === 'tv'} />
+        <MoviesToday key='trending-movie-day' inView={mediaType === 'movie' && time === 'day'} />
+        <TVToday key='trending-tv-day' inView={mediaType === 'tv' && time === 'day'} />
+        <MovieWeek key='trending-movie-week' inView={mediaType === 'movie' && time === 'week'} />
+        <TVWeek key='trending-tv-week' inView={mediaType === 'tv' && time === 'week'} />
       </AnimatePresence>
     </div>
   )

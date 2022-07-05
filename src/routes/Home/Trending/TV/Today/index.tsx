@@ -1,6 +1,6 @@
 import Carousel from 'components/Carousel'
-import { useTVTrendings } from 'hooks/trendings'
-import { Suspense, useMemo } from 'react'
+import { useTVDayTrendings } from 'hooks/trendings'
+import { useMemo } from 'react'
 import TVItem from '../TVItem'
 
 interface IProps {
@@ -8,15 +8,18 @@ interface IProps {
 }
 
 const Today = ({ inView }: IProps) => {
-  const { data } = useTVTrendings('day')
+  const { data } = useTVDayTrendings()
 
-  const TVList = useMemo(() => data?.results.map((tv) => <TVItem key={tv.id} tv={tv} />), [data?.results])
-  if (!inView) return null
-  return (
-    <Suspense fallback={<div>loading...</div>}>
-      <Carousel dragConstraints={450 * 20}>{TVList}</Carousel>
-    </Suspense>
+  const TVList = useMemo(
+    () =>
+      data?.results.map((tv) => {
+        const key = `today-tv-${tv.id}`
+        return <TVItem key={key} tv={tv} />
+      }),
+    [data?.results]
   )
+  if (!inView) return null
+  return <Carousel dragConstraints={450 * 20}>{TVList}</Carousel>
 }
 
 export default Today

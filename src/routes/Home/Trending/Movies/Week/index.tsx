@@ -1,5 +1,5 @@
 import Carousel from 'components/Carousel'
-import { useMovieTrendings } from 'hooks/trendings'
+import { useMovieWeekTrendings } from 'hooks/trendings'
 import { Suspense, useMemo } from 'react'
 import MovieItem from '../MovieItem'
 
@@ -8,10 +8,14 @@ interface IProps {
 }
 
 const Week = ({ inView }: IProps) => {
-  const { data } = useMovieTrendings('week')
+  const { data } = useMovieWeekTrendings()
 
   const MovieList = useMemo(
-    () => data?.results.map((movie) => <MovieItem key={movie.id} movie={movie} />),
+    () =>
+      data?.results.map((movie) => {
+        const key = `movie-week-${movie.id}`
+        return <MovieItem key={key} movie={movie} />
+      }),
     [data?.results]
   )
   if (!inView) return null
