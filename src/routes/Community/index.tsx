@@ -1,9 +1,9 @@
-import { opacityVariant } from 'animations'
+import { opacityVariants } from 'animations'
 import { motion } from 'framer-motion'
 
 const Community = () => {
   return (
-    <motion.div variants={opacityVariant} initial='initial' animate='animate' exit='exit'>
+    <motion.div variants={opacityVariants} initial='initial' animate='animate' exit='exit'>
       Community
     </motion.div>
   )

@@ -1,6 +1,6 @@
 import { Variants } from 'framer-motion'
 
-export const opacityVariant: Variants = {
+export const opacityVariants: Variants = {
   initial: {
     opacity: 0,
   },
