@@ -3,6 +3,7 @@
 
 li.wrapper {
   @include flexbox.flexbox(start,center);
+  position: relative;
   column-gap: 10px;
   width: 200px;
   padding: 15px 10px;
@@ -28,5 +29,15 @@ li.wrapper {
   svg {
     width: 20px;
     fill: colors.$GRAY7;
+  }
+
+  .redBar {
+    position: absolute;
+    right: 0;
+    width: 4px;
+    height: 18px;
+    background-color: colors.$RED;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
   }
 }
