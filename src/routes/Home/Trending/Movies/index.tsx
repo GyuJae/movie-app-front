@@ -1,6 +1,6 @@
 import Carousel from 'components/Carousel'
 import { useMovieTrendings } from 'hooks/trendings'
-import { Suspense } from 'react'
+import { Suspense, useMemo } from 'react'
 import MovieItem from './MovieItem'
 
 interface IProps {
@@ -9,14 +9,16 @@ interface IProps {
 
 const Movies = ({ inView }: IProps) => {
   const { data } = useMovieTrendings('day')
+
+  const MovieList = useMemo(
+    () => data?.results.map((movie) => <MovieItem key={movie.id} movie={movie} />),
+    [data?.results]
+  )
+
   if (!inView) return null
   return (
     <Suspense fallback={<div>loading...</div>}>
-      <Carousel dragConstraints={450 * 20}>
-        {data?.results.map((movie) => (
-          <MovieItem key={movie.id} movie={movie} />
-        ))}
-      </Carousel>
+      <Carousel dragConstraints={450 * 20}>{MovieList}</Carousel>
     </Suspense>
   )
 }

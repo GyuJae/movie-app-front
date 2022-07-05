@@ -1,3 +1,4 @@
+import { AnimatePresence } from 'framer-motion'
 import { useSearchParams } from 'react-router-dom'
 import { TMediaType } from 'types/trending'
 import Movies from './Movies'
@@ -11,8 +12,10 @@ const Trending = () => {
   return (
     <div className={styles.wrapper}>
       <h3>Trending</h3>
-      <Movies inView={mediaType === 'movie'} />
-      <TV inView={mediaType === 'tv'} />
+      <AnimatePresence>
+        <Movies inView={mediaType === 'movie'} />
+        <TV inView={mediaType === 'tv'} />
+      </AnimatePresence>
     </div>
   )
 }

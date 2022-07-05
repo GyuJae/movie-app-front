@@ -2,6 +2,8 @@ import ReadMore from 'components/ReadNow'
 import { IMovie } from 'types/movie'
 import { getMediaImage } from 'utils/getMediaImage'
 import styles from './movieItem.module.scss'
+import { motion } from 'framer-motion'
+import { opacityVariants } from 'animations'
 
 interface IProps {
   movie: IMovie
@@ -10,7 +12,7 @@ interface IProps {
 const MovieItem = ({ movie }: IProps) => {
   if (!movie.backdrop_path) return null
   return (
-    <div className={styles.wrapper}>
+    <motion.div variants={opacityVariants} initial='initial' animate='animate' exit='exit' className={styles.wrapper}>
       <img alt={movie.original_title} src={getMediaImage({ path: movie.backdrop_path, format: 'w780' })} />
       <div className={styles.container}>
         <span className={styles.title}>{movie.original_title}</span>
@@ -23,7 +25,7 @@ const MovieItem = ({ movie }: IProps) => {
       <div className={styles.readMoreContainer}>
         <ReadMore mediaId={movie.id} mediaType='movie' />
       </div>
-    </div>
+    </motion.div>
   )
 }
 
