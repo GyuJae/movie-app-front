@@ -1,38 +1,41 @@
-import { CompassIcon, HomeIcon, SearchIcon, UsersIcon } from 'assets/svgs'
-import { Link, useLocation } from 'react-router-dom'
-import { cx } from 'styles'
+import { useMemo } from 'react'
 import styles from './navigation.module.scss'
+import NavItem from './NavItem'
+
+const items = [
+  {
+    name: 'Home',
+    pathname: '/',
+  },
+  {
+    name: 'Discovery',
+    pathname: '/discovery',
+  },
+  {
+    name: 'Community',
+    pathname: '/community',
+  },
+  {
+    name: 'Search',
+    pathname: '/search',
+  },
+]
 
 const Navigation = () => {
-  const { pathname } = useLocation()
+  const NavItemList = useMemo(
+    () => (
+      <ul>
+        {items.map((item) => (
+          <NavItem key={item.pathname} name={item.name} pathname={item.pathname} />
+        ))}
+      </ul>
+    ),
+    []
+  )
   return (
     <nav className={styles.wrapper}>
       <h3>menu</h3>
-      <ul>
-        <Link to='/'>
-          <li className={cx({ [styles.current]: pathname === '/' })}>
-            <HomeIcon />
-            Home
-          </li>
-        </Link>
-        <Link to='/discovery'>
-          <li className={cx({ [styles.current]: pathname === '/discovery' })}>
-            <CompassIcon /> Discovery
-          </li>
-        </Link>
-        <Link to='/community'>
-          <li className={cx({ [styles.current]: pathname === '/community' })}>
-            <UsersIcon />
-            Community
-          </li>
-        </Link>
-        <Link to='/search'>
-          <li className={cx({ [styles.current]: pathname === '/search' })}>
-            <SearchIcon />
-            Search
-          </li>
-        </Link>
-      </ul>
+      {NavItemList}
     </nav>
   )
 }
