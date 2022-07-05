@@ -1,6 +1,6 @@
 import { CompassIcon, HomeIcon, SearchIcon, UsersIcon } from 'assets/svgs'
 import { AnimatePresence, motion, Variants } from 'framer-motion'
-import { memo } from 'react'
+import { memo, useMemo } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { cx } from 'styles'
 import styles from './navItem.module.scss'
@@ -33,16 +33,22 @@ const NavItem = ({ name, pathname }: IProps) => {
     Search: <SearchIcon />,
   }[name]
   const { pathname: location } = useLocation()
+  const RedBar = useMemo(
+    () => (
+      <AnimatePresence>
+        {location === pathname && (
+          <motion.div className={styles.redBar} variants={variants} initial='initial' animate='animate' exit='exit' />
+        )}
+      </AnimatePresence>
+    ),
+    [location, pathname]
+  )
   return (
     <Link to={pathname}>
       <li className={cx(styles.wrapper, { [styles.current]: location === pathname })}>
         {Icon}
         {name}
-        <AnimatePresence>
-          {location === pathname && (
-            <motion.div className={styles.redBar} variants={variants} initial='initial' animate='animate' exit='exit' />
-          )}
-        </AnimatePresence>
+        {RedBar}
       </li>
     </Link>
   )
