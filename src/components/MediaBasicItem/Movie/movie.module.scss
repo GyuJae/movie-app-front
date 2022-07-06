@@ -3,8 +3,8 @@
 
 .wrapper {
   position: relative;
-  min-width: 480px;
-  height: 300px;
+  min-width: 440px;
+  height: 280px;
   background-color: colors.$WEAKBLACK;
 
   img {
@@ -34,24 +34,6 @@
 
     .date {
       font-size: 15px;
-    }
-
-    .ratingContainer {
-      @include flexbox.flexbox(start, center);
-      column-gap: 5px;
-
-      div {
-        padding: 2px;
-        font-size: 13px;
-        font-weight: 900;
-        color: colors.$BLACK;
-        background-color: colors.$YELLOW;
-        border-radius: 2px;
-      }
-
-      .rating {
-        font-size: 15px;
-      }
     }
   }
 

@@ -1,8 +1,13 @@
+@use '/src/styles/mixins/flexbox';
+
 .wrapper {
   width: 100%;
   overflow: hidden;
 
   .mediaContainer {
+    @include flexbox.flexbox(center, start);
+    flex-direction: column;
+    row-gap: 15px;
     padding: 15px;
   }
 }

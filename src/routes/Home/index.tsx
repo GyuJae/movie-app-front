@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import HomeHeader from './HomeHeader'
 import styles from './home.module.scss'
 import Trending from './Trending'
+import Upcoming from './Upcoming'
 
 const Home = () => {
   return (
@@ -10,6 +11,7 @@ const Home = () => {
       <HomeHeader />
       <div className={styles.mediaContainer}>
         <Trending />
+        <Upcoming />
       </div>
     </motion.div>
   )
