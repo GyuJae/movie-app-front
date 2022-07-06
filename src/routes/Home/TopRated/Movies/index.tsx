@@ -1,28 +1,28 @@
-import { opacityVariants } from 'animations'
-import Carousel from 'components/Carousel'
-import Movie from 'components/MediaBasicItem/Movie'
-import { motion } from 'framer-motion'
 import { useMovies } from 'hooks/movies'
 import { useMemo } from 'react'
+import MovieItem from './MovieItem'
+import { motion } from 'framer-motion'
+import { opacityVariants } from 'animations'
+import Carousel from 'components/Carousel'
 
 interface IProps {
   inView: boolean
 }
 
 const Movies = ({ inView }: IProps) => {
-  const { data } = useMovies('upcoming')
+  const { data } = useMovies('top_rated')
   const MovieList = useMemo(
     () =>
       data?.results.map((movie, index) => {
-        const key = `upcoming-movie-${movie.id}-${index}`
-        return <Movie key={key} movie={movie} />
+        const key = `topRated-movie-${movie.id}-${index}`
+        return <MovieItem key={key} movie={movie} />
       }),
     [data]
   )
   if (!inView) return null
   return (
     <motion.div variants={opacityVariants} initial='initial' animate='animate' exit='exit'>
-      <Carousel dragConstraints={415 * 20}>{MovieList}</Carousel>
+      <Carousel dragConstraints={230 * 20}>{MovieList}</Carousel>
     </motion.div>
   )
 }

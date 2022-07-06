@@ -3,8 +3,8 @@
 
 .wrapper {
   position: relative;
-  min-width: 440px;
-  height: 280px;
+  min-width: 270px;
+  height: 270px;
   background-color: colors.$WEAKBLACK;
   border-radius: 10px;
 
@@ -16,6 +16,23 @@
     pointer-events: none;
     border-radius: 10px;
     object-fit: cover;
+  }
+
+  .rateContainer {
+    @include flexbox.flexbox;
+    position: absolute;
+    top: 8px;
+    left: 6px;
+    column-gap: 5px;
+    width: 60px;
+    padding: 7px;
+    background-color: rgba(26, 22, 31, 90%);
+    border-radius: 20px;
+
+    svg {
+      width: 18px;
+      fill: colors.$YELLOW;
+    }
   }
 
   .container {
@@ -36,11 +53,5 @@
     .date {
       font-size: 15px;
     }
-  }
-
-  .readMoreContainer {
-    position: absolute;
-    right: 40px;
-    bottom: 30px;
   }
 }

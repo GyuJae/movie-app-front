@@ -12,8 +12,8 @@ const Today = ({ inView }: IProps) => {
 
   const TVList = useMemo(
     () =>
-      data?.results.map((tv) => {
-        const key = `today-tv-${tv.id}`
+      data?.results.map((tv, index) => {
+        const key = `today-tv-${tv.id}-${index}`
         return <TVItem key={key} tv={tv} />
       }),
     [data?.results]

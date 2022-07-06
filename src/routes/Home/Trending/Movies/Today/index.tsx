@@ -12,8 +12,8 @@ const Today = ({ inView }: IProps) => {
 
   const MovieList = useMemo(
     () =>
-      data?.results.map((movie) => {
-        const key = `movie-today-${movie.id}`
+      data?.results.map((movie, index) => {
+        const key = `movie-today-${movie.id}-${index}`
         return <MovieItem key={key} movie={movie} />
       }),
     [data?.results]

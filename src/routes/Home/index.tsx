@@ -4,6 +4,7 @@ import HomeHeader from './HomeHeader'
 import styles from './home.module.scss'
 import Trending from './Trending'
 import Upcoming from './Upcoming'
+import TopRated from './TopRated'
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
       <div className={styles.mediaContainer}>
         <Trending />
         <Upcoming />
+        <TopRated />
       </div>
     </motion.div>
   )
