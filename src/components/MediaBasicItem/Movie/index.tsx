@@ -15,6 +15,10 @@ const Movie = ({ movie }: IProps) => {
       <div className={styles.container}>
         <span className={styles.title}>{movie.title}</span>
         <span className={styles.date}>{movie.release_date.split('-')[0]}</span>
+        <div className={styles.ratingContainer}>
+          <div>IMDB</div>
+          <span className={styles.date}>{movie.vote_average.toFixed(1)} rating</span>
+        </div>
       </div>
       <div className={styles.readMoreContainer}>
         <ReadNow mediaType='movie' mediaId={movie.id} />

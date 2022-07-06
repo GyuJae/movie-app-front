@@ -15,6 +15,10 @@ const TVItem = ({ tv }: IProps) => {
       <div className={styles.container}>
         <span className={styles.title}>{tv.original_name}</span>
         <span className={styles.date}>{tv.first_air_date.split('-')[0]}</span>
+        <div className={styles.ratingContainer}>
+          <div>IMDB</div>
+          <span className={styles.date}>{tv.vote_average.toFixed(1)} rating</span>
+        </div>
       </div>
       <div className={styles.readMoreContainer}>
         <ReadNow mediaType='tv' mediaId={tv.id} />

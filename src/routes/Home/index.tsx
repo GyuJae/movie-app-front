@@ -6,6 +6,7 @@ import Trending from './Trending'
 import Upcoming from './Upcoming'
 import TopRated from './TopRated'
 import Popular from './Popular'
+import NowPlaying from './NowPlaying'
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
         <Trending />
         <Upcoming />
         <Popular />
+        <NowPlaying />
         <TopRated />
       </div>
     </motion.div>
