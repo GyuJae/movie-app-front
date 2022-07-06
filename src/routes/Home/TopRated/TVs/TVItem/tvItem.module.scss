@@ -3,8 +3,8 @@
 
 .wrapper {
   position: relative;
-  min-width: 270px;
-  height: 270px;
+  min-width: 240px;
+  height: 240px;
   background-color: colors.$WEAKBLACK;
   border-radius: 10px;
 
@@ -46,12 +46,12 @@
     background: linear-gradient(transparent, black);
 
     .title {
-      font-size: 20px;
+      font-size: 16px;
       font-weight: 500;
     }
 
     .date {
-      font-size: 15px;
+      font-size: 13px;
     }
   }
 }

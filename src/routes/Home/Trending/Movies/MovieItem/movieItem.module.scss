@@ -3,8 +3,8 @@
 
 .wrapper {
   position: relative;
-  min-width: 480px;
-  height: 300px;
+  min-width: 400px;
+  height: 260px;
   background-color: colors.$WEAKBLACK;
   border-radius: 10px;
 
@@ -58,7 +58,7 @@
 
   .readMoreContainer {
     position: absolute;
-    right: 40px;
-    bottom: 30px;
+    right: 10px;
+    bottom: 20px;
   }
 }

@@ -13,7 +13,7 @@ const TVItem = ({ tv }: IProps) => {
     <div className={styles.wrapper}>
       <img alt={`tvItem-${tv.name}`} src={getMediaImage({ path: tv.backdrop_path, format: 'w780' })} />
       <div className={styles.container}>
-        <span className={styles.title}>{tv.original_name}</span>
+        <span className={styles.title}>{tv.name}</span>
         <span className={styles.date}>{tv.first_air_date.split('-')[0]}</span>
         <div className={styles.ratingContainer}>
           <div>IMDB</div>

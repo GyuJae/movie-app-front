@@ -3,8 +3,8 @@
 
 .wrapper {
   position: relative;
-  min-width: 440px;
-  height: 280px;
+  min-width: 360px;
+  height: 220px;
   background-color: colors.$WEAKBLACK;
   border-radius: 10px;
 
@@ -29,12 +29,12 @@
     background: linear-gradient(transparent, black);
 
     .title {
-      font-size: 20px;
+      font-size: 16px;
       font-weight: 500;
     }
 
     .date {
-      font-size: 15px;
+      font-size: 13px;
     }
 
     .ratingContainer {
@@ -58,7 +58,7 @@
 
   .readMoreContainer {
     position: absolute;
-    right: 40px;
+    right: 10px;
     bottom: 30px;
   }
 }
