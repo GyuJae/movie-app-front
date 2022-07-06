@@ -10,13 +10,13 @@ interface IProps {
 }
 
 const TVItem = ({ tv }: IProps) => {
-  if (!tv.backdrop_path) return null
+  if (!tv.backdrop_path || !tv.first_air_date) return null
   return (
     <motion.div variants={opacityVariants} initial='initial' animate='animate' exit='exit' className={styles.wrapper}>
       <img alt={tv.original_name} src={getMediaImage({ path: tv.backdrop_path, format: 'w780' })} />
       <div className={styles.container}>
         <span className={styles.title}>{tv.original_name}</span>
-        <span className={styles.date}>{tv.first_air_date?.split('-')[0]}</span>
+        <span className={styles.date}>{tv.first_air_date.split('-')[0]}</span>
         <div className={styles.ratingContainer}>
           <div>IMDB</div>
           <span className={styles.date}>{tv.vote_average.toFixed(1)} rating</span>
