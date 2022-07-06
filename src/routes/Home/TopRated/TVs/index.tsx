@@ -22,7 +22,7 @@ const TVs = ({ inView }: IProps) => {
   if (!inView) return null
   return (
     <motion.div variants={opacityVariants} initial='initial' animate='animate' exit='exit'>
-      <Carousel dragConstraints={230 * 20}>{TVList}</Carousel>
+      <Carousel dragConstraints={200 * (TVList?.length || 20)}>{TVList}</Carousel>
     </motion.div>
   )
 }

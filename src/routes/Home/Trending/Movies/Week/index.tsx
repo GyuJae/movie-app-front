@@ -18,10 +18,11 @@ const Week = ({ inView }: IProps) => {
       }),
     [data?.results]
   )
+
   if (!inView) return null
   return (
     <Suspense fallback={<div>loading...</div>}>
-      <Carousel dragConstraints={450 * 20}>{MovieList}</Carousel>
+      <Carousel dragConstraints={360 * (MovieList?.length || 20)}>{MovieList}</Carousel>
     </Suspense>
   )
 }

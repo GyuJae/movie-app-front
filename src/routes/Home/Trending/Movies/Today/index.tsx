@@ -20,7 +20,7 @@ const Today = ({ inView }: IProps) => {
   )
 
   if (!inView) return null
-  return <Carousel dragConstraints={450 * 20}>{MovieList}</Carousel>
+  return <Carousel dragConstraints={360 * (MovieList?.length || 20)}>{MovieList}</Carousel>
 }
 
 export default Today

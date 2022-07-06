@@ -22,7 +22,7 @@ const Movies = ({ inView }: IProps) => {
   if (!inView) return null
   return (
     <motion.div variants={opacityVariants} initial='initial' animate='animate' exit='exit'>
-      <Carousel dragConstraints={230 * 20}>{MovieList}</Carousel>
+      <Carousel dragConstraints={200 * (MovieList?.length || 20)}>{MovieList}</Carousel>
     </motion.div>
   )
 }
