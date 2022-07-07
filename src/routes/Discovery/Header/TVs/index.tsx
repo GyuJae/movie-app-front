@@ -1,4 +1,3 @@
-import { AnimatePresence } from 'framer-motion'
 import { useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { cx } from 'styles'
@@ -14,9 +13,7 @@ const TVs = () => {
   return (
     <li className={cx(styles.item, { [styles.current]: mediaType === 'tv' })} onMouseEnter={handleMouseEnter}>
       TV Shows
-      <AnimatePresence>
-        <Categories inView={openCategories} handleMouseLeave={handleMouseLeave} />
-      </AnimatePresence>
+      <Categories inView={openCategories} handleMouseLeave={handleMouseLeave} />
     </li>
   )
 }

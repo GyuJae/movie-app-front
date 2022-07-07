@@ -13,7 +13,8 @@ const Movies = ({ inView }: IProps) => {
   const { data } = useMovies('upcoming')
   const MovieList = useMemo(
     () =>
-      data?.results.map((movie, index) => {
+      data?.results &&
+      data.results.map((movie, index) => {
         const key = `upcoming-movie-${movie.id}-${index}`
         return <Movie key={key} movie={movie} />
       }),

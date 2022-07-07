@@ -13,7 +13,8 @@ const TVs = ({ inView }: IProps) => {
   const { data } = useTvs('top_rated')
   const TVList = useMemo(
     () =>
-      data?.results.map((tv, index) => {
+      data?.results &&
+      data.results.map((tv, index) => {
         const key = `topRated-tv-${tv.id}-${index}`
         return <TVItem key={key} tv={tv} />
       }),

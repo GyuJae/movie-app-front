@@ -13,7 +13,8 @@ const TV = ({ inView }: IProps) => {
   const { data } = useTvs('on_the_air')
   const TVList = useMemo(
     () =>
-      data?.results.map((tv, index) => {
+      data?.results &&
+      data.results.map((tv, index) => {
         const key = `on-the-air-tv-${tv.id}-${index}`
         return <TVItem key={key} tv={tv} />
       }),

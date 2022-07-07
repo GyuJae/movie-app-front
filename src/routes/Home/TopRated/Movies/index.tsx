@@ -13,7 +13,8 @@ const Movies = ({ inView }: IProps) => {
   const { data } = useMovies('top_rated')
   const MovieList = useMemo(
     () =>
-      data?.results.map((movie, index) => {
+      data?.results &&
+      data.results.map((movie, index) => {
         const key = `topRated-movie-${movie.id}-${index}`
         return <MovieItem key={key} movie={movie} />
       }),
