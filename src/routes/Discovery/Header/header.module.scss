@@ -1,0 +1,11 @@
+@use '/src/styles/mixins/flexbox';
+@use '/src/styles/constants/colors';
+
+.wrapper {
+  ul.headerContainer {
+    @include flexbox.flexbox(start, center);
+    column-gap: 30px;
+    padding: 25px 20px;
+    border-bottom: 1.5px solid colors.$WEAKBLACK;
+  }
+}

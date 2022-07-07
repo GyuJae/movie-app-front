@@ -1,0 +1,9 @@
+@use '/src/styles/constants/colors';
+
+.item {
+  color: colors.$GRAY7;
+
+  &.current {
+    color: colors.$WHITE;
+  }
+}

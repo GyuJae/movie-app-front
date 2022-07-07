@@ -24,7 +24,7 @@ const TVItem = ({ tv }: IProps) => {
     <motion.div variants={opacityVariants} initial='initial' animate='animate' exit='exit' className={styles.wrapper}>
       {backgroundImage}
       <div className={styles.container}>
-        <span className={styles.title}>{tv.original_name}</span>
+        <span className={styles.title}>{tv.name}</span>
         {date}
         <div className={styles.ratingContainer}>
           <div>IMDB</div>
