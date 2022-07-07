@@ -1,6 +1,7 @@
 @use '/src/styles/constants/colors';
 
 .item {
+  position: relative;
   color: colors.$GRAY7;
 
   &.current {
