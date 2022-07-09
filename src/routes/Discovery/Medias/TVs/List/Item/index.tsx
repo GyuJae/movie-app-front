@@ -1,4 +1,5 @@
 import { useMemo } from 'react'
+import { Link } from 'react-router-dom'
 import { ITV } from 'types/tv'
 import { getMediaImage } from 'utils/getMediaImage'
 import styles from './item.module.scss'
@@ -13,10 +14,12 @@ const Item = ({ tv }: IProps) => {
     [tv.poster_path, tv.name]
   )
   return (
-    <li className={styles.item}>
-      {image}
-      <span>{tv.name}</span>
-    </li>
+    <Link to={`/tv/${tv.id}`} style={{ all: 'unset', cursor: 'pointer' }}>
+      <li className={styles.item}>
+        {image}
+        <span>{tv.name}</span>
+      </li>
+    </Link>
   )
 }
 

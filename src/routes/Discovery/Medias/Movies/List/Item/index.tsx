@@ -1,4 +1,5 @@
 import { useMemo } from 'react'
+import { Link } from 'react-router-dom'
 import { IMovie } from 'types/movie'
 import { getMediaImage } from 'utils/getMediaImage'
 import styles from './item.module.scss'
@@ -16,10 +17,12 @@ const Item = ({ movie }: IProps) => {
     [movie.poster_path, movie.title]
   )
   return (
-    <li className={styles.item}>
-      {image}
-      <span>{movie.title}</span>
-    </li>
+    <Link to={`/movie/${movie.id}`} style={{ all: 'unset', cursor: 'pointer' }}>
+      <li className={styles.item}>
+        {image}
+        <span>{movie.title}</span>
+      </li>
+    </Link>
   )
 }
 
