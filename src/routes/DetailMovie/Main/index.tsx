@@ -41,7 +41,7 @@ const Main = () => {
   )
   if (!data) return <div className={styles.wrapper} />
   return (
-    <>
+    <div className={styles.wrapper}>
       {backgroundImage}
       <div className={styles.contentContainer}>
         {posterImage}
@@ -62,7 +62,7 @@ const Main = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 
