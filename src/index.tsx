@@ -6,17 +6,21 @@ import ReactDOM from 'react-dom/client'
 import Routes from './routes'
 import reportWebVitals from './reportWebVitals'
 import { QueryClient, QueryClientProvider } from 'react-query'
+import { ApolloProvider } from '@apollo/client'
+import { client } from 'apollo'
 
 const queryClient = new QueryClient()
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <Routes />
-      </BrowserRouter>
-    </QueryClientProvider>
+    <ApolloProvider client={client}>
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          <Routes />
+        </BrowserRouter>
+      </QueryClientProvider>
+    </ApolloProvider>
   </React.StrictMode>
 )
 

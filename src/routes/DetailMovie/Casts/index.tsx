@@ -10,7 +10,7 @@ const Casts = () => {
   const { data } = useMovieCredits(id as string)
   const casts = useMemo(
     () =>
-      data?.cast.slice(0, 20).map((people) => {
+      data?.cast.map((people) => {
         if (!people.profile_path) return null
         return (
           <li key={`cast-${people.name}-${people.id}`} className={styles.item}>
@@ -21,7 +21,7 @@ const Casts = () => {
       }),
     [data?.cast]
   )
-  const dragConstraints = 130 * (data?.cast.length && data?.cast.length >= 20 ? 20 : data?.cast.length || 20)
+  const dragConstraints = useMemo(() => 180 * (data?.cast.length || 20), [data?.cast])
   if (!data?.cast || data.cast.length === 0) return null
   return (
     <div className={styles.wrapper}>
