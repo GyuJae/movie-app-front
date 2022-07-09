@@ -13,9 +13,7 @@ const Movie = ({ movie }: IProps) => {
     () =>
       movie.backdrop_path ? (
         <img alt={movie.title} src={getMediaImage({ path: movie.backdrop_path, format: 'w500' })} />
-      ) : (
-        <div />
-      ),
+      ) : null,
     [movie.backdrop_path, movie.title]
   )
 

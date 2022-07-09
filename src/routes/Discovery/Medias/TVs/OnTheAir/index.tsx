@@ -1,16 +1,17 @@
 import InfiniteRefetchBtn from 'components/InfiniteRefetchBtn'
-import { useInfiniteMovies } from 'hooks/movies'
+import { useInfiniteTVs } from 'hooks/tvs'
 import { useMemo } from 'react'
 import List from '../List'
 
 interface IProps {
   inView: boolean
 }
-const Upcoming = ({ inView }: IProps) => {
-  const { data, hasNextPage, fetchNextPage, isFetching } = useInfiniteMovies('upcoming')
+
+const OnTheAir = ({ inView }: IProps) => {
+  const { data, hasNextPage, fetchNextPage, isFetching } = useInfiniteTVs('on_the_air')
 
   const Pages = useMemo(
-    () => data?.pages && data.pages.map((pag) => <List key={pag.page} movies={pag.results} />),
+    () => data?.pages && data.pages.map((page) => <List key={page.page} tvs={page.results} />),
     [data?.pages]
   )
 
@@ -33,4 +34,4 @@ const Upcoming = ({ inView }: IProps) => {
   )
 }
 
-export default Upcoming
+export default OnTheAir

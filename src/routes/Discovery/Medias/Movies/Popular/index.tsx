@@ -11,7 +11,7 @@ const Popular = ({ inView }: IProps) => {
   const { data, hasNextPage, fetchNextPage, isFetching } = useInfiniteMovies('popular')
 
   const Pages = useMemo(
-    () => (data?.pages ? data.pages.map((pag) => <List key={pag.page} movies={pag.results} />) : null),
+    () => data?.pages && data.pages.map((pag) => <List key={pag.page} movies={pag.results} />),
     [data?.pages]
   )
 
@@ -28,6 +28,7 @@ const Popular = ({ inView }: IProps) => {
         inView={hasNextPage || false}
         handleClickNextPage={handleClickNextPage}
         isFetching={isFetching}
+        isMarginTop
       />
     </div>
   )

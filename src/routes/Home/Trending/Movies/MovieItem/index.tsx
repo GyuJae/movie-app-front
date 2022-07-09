@@ -14,10 +14,8 @@ const MovieItem = ({ movie }: IProps) => {
   const backgroundImage = useMemo(
     () =>
       movie.backdrop_path ? (
-        <img alt={movie.title} src={getMediaImage({ path: movie.backdrop_path, format: 'w500' })} />
-      ) : (
-        <div />
-      ),
+        <img alt={movie.title} src={getMediaImage({ path: movie.backdrop_path, format: 'w780' })} />
+      ) : null,
     [movie.backdrop_path, movie.title]
   )
 

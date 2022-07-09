@@ -1,6 +1,6 @@
 import Carousel from 'components/Carousel'
 import { useMovieWeekTrendings } from 'hooks/trendings'
-import { Suspense, useMemo } from 'react'
+import { useMemo } from 'react'
 import MovieItem from '../MovieItem'
 
 interface IProps {
@@ -21,11 +21,7 @@ const Week = ({ inView }: IProps) => {
   )
 
   if (!inView) return null
-  return (
-    <Suspense fallback={<div>loading...</div>}>
-      <Carousel dragConstraints={360 * (MovieList?.length || 20)}>{MovieList}</Carousel>
-    </Suspense>
-  )
+  return <Carousel dragConstraints={360 * (MovieList?.length || 20)}>{MovieList}</Carousel>
 }
 
 export default Week

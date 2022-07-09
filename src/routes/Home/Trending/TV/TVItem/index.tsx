@@ -13,7 +13,7 @@ interface IProps {
 const TVItem = ({ tv }: IProps) => {
   const backgroundImage = useMemo(
     () =>
-      tv.backdrop_path ? <img alt={tv.name} src={getMediaImage({ path: tv.backdrop_path, format: 'w500' })} /> : null,
+      tv.backdrop_path ? <img alt={tv.name} src={getMediaImage({ path: tv.backdrop_path, format: 'w780' })} /> : null,
     [tv.backdrop_path, tv.name]
   )
   const date = useMemo(

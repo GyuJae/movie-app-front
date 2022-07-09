@@ -1,7 +1,13 @@
 import { useSearchParams } from 'react-router-dom'
 import styles from './medias.module.scss'
-import Movies from './Movies'
-import TVs from './TVs'
+import NowPlaying from './Movies/NowPlaying'
+import PopularMovie from './Movies/Popular'
+import TopRatedMovie from './Movies/TopRated'
+import Upcoming from './Movies/Upcoming'
+import AiringToday from './TVs/AiringToday'
+import OnTheAir from './TVs/OnTheAir'
+import PopularTV from './TVs/Popular'
+import TopRatedTV from './TVs/TopRated'
 
 const Medias = () => {
   const [searchParams] = useSearchParams()
@@ -20,8 +26,14 @@ const Medias = () => {
     <div className={styles.wrapper}>
       <h3>{categoryName}</h3>
       <div className={styles.mediaContainer}>
-        <Movies inView={mediaType === 'movie'} />
-        <TVs inView={mediaType === 'tv'} />
+        <TopRatedTV inView={mediaType === 'tv' && categoryParam === 'top_rated'} />
+        <PopularTV inView={mediaType === 'tv' && categoryParam === 'popular'} />
+        <AiringToday inView={mediaType === 'tv' && categoryParam === 'airing_today'} />
+        <OnTheAir inView={mediaType === 'tv' && categoryParam === 'on_the_air'} />
+        <TopRatedMovie inView={mediaType === 'movie' && categoryParam === 'top_rated'} />
+        <PopularMovie inView={mediaType === 'movie' && categoryParam === 'popular'} />
+        <Upcoming inView={mediaType === 'movie' && categoryParam === 'upcoming'} />
+        <NowPlaying inView={mediaType === 'movie' && categoryParam === 'now_playing'} />
       </div>
     </div>
   )

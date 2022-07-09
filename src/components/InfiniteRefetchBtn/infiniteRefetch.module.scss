@@ -10,6 +10,10 @@
   background-color: colors.$RED;
   border-radius: 5px;
 
+  &.isMarginTop {
+    margin-top: 30px;
+  }
+
   &:hover {
     filter: brightness(105%);
   }
