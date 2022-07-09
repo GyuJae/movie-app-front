@@ -2,6 +2,7 @@ import Casts from './Casts'
 import styles from './detailMovie.module.scss'
 import Main from './Main'
 import Recommendations from './Recommendations'
+import Similar from './Similar'
 
 const DetailMovie = () => {
   return (
@@ -9,6 +10,7 @@ const DetailMovie = () => {
       <Main />
       <Casts />
       <Recommendations />
+      <Similar />
     </div>
   )
 }

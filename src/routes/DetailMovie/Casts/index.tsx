@@ -22,7 +22,7 @@ const Casts = () => {
     [data?.cast]
   )
   const dragConstraints = 130 * (data?.cast.length && data?.cast.length >= 20 ? 20 : data?.cast.length || 20)
-  if (!data) return null
+  if (!data?.cast || data.cast.length === 0) return null
   return (
     <div className={styles.wrapper}>
       <h2>Casts</h2>
