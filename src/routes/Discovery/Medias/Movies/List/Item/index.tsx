@@ -1,3 +1,5 @@
+import { opacityVariants } from 'animations'
+import { AnimatePresence, motion } from 'framer-motion'
 import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { IMovie } from 'types/movie'
@@ -17,12 +19,14 @@ const Item = ({ movie }: IProps) => {
     [movie.poster_path, movie.title]
   )
   return (
-    <Link to={`/movie/${movie.id}`} style={{ all: 'unset', cursor: 'pointer' }}>
-      <li className={styles.item}>
-        {image}
-        <span>{movie.title}</span>
-      </li>
-    </Link>
+    <AnimatePresence>
+      <Link to={`/movie/${movie.id}`} style={{ all: 'unset', cursor: 'pointer' }}>
+        <motion.li variants={opacityVariants} initial='initial' animate='animate' exit='exit' className={styles.item}>
+          {image}
+          <span>{movie.title}</span>
+        </motion.li>
+      </Link>
+    </AnimatePresence>
   )
 }
 
