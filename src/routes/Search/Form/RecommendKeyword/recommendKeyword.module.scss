@@ -1,0 +1,42 @@
+@use '/src/styles/mixins/flexbox';
+@use '/src/styles/constants/colors';
+
+.wrapper {
+  @include flexbox.flexbox(start,start);
+  position: absolute;
+  z-index: 100;
+  flex-direction: column;
+  width: 800px;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: colors.$WEAKBLACK;
+  border-radius: 10px;
+
+  h3 {
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  ul {
+    @include flexbox.flexbox(start,start);
+    flex-direction: column;
+    row-gap: 5px;
+    width: 100%;
+    margin-top: 5px;
+
+    li {
+      width: 100%;
+
+      button {
+        width: 100%;
+        padding: 10px;
+        color: colors.$WHITE;
+        text-align: left;
+
+        &:hover {
+          background-color: colors.$GRAY3;
+        }
+      }
+    }
+  }
+}
