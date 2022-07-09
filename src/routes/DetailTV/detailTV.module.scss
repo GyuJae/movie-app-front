@@ -1,0 +1,7 @@
+@use '/src/styles/constants/colors';
+@use '/src/styles/mixins/flexbox';
+
+.wrapper {
+  color: colors.$WHITE;
+  background-color: colors.$BLACK;
+}

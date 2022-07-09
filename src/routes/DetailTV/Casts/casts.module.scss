@@ -1,0 +1,25 @@
+@use '/src/styles/mixins/flexbox';
+
+.wrapper {
+  @include flexbox.flexbox(start, start);
+  flex-direction: column;
+  row-gap: 20px;
+  padding: 20px;
+
+  h2 {
+    font-size: 25px;
+  }
+
+  .item {
+    img {
+      width: 200px;
+      pointer-events: none;
+      border-radius: 10px;
+    }
+
+    .noPhoto {
+      width: 200px;
+      height: 150px;
+    }
+  }
+}
