@@ -1,0 +1,10 @@
+@use '/src/styles/constants/colors';
+@use '/src/styles/mixins/flexbox';
+
+.wrapper {
+  position: relative;
+  min-width: 100vw;
+  min-height: 100vh;
+  color: colors.$WHITE;
+  background-color: black;
+}

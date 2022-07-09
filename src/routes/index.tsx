@@ -2,6 +2,8 @@ import Layout from 'components/Layout'
 import { AnimatePresence } from 'framer-motion'
 import { Route, Routes } from 'react-router-dom'
 import Community from './Community'
+import DetailMovie from './DetailMovie'
+import DetailTV from './DetailTV'
 import Discovery from './Discovery'
 import Home from './Home'
 import Search from './Search'
@@ -16,6 +18,8 @@ const App = () => {
           <Route path='/community' element={<Community />} />
           <Route path='/search' element={<Search />} />
         </Route>
+        <Route path='/movie/:id' element={<DetailMovie />} />
+        <Route path='/tv/:id' element={<DetailTV />} />
       </Routes>
     </AnimatePresence>
   )

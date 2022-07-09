@@ -1,0 +1,71 @@
+@use '/src/styles/constants/colors';
+@use '/src/styles/mixins/flexbox';
+
+.backgroundImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.3;
+}
+
+.contentContainer {
+  @include flexbox.flexbox(start, center);
+  position: absolute;
+  z-index: 100;
+  column-gap: 30px;
+  width: 100vw;
+  height: 100vh;
+  padding: 0 30px;
+
+  .posterImage {
+    width: 300px;
+    border-radius: 10px;
+  }
+
+  .descriptionContainer {
+    @include flexbox.flexbox(start,start);
+    flex-direction: column;
+    row-gap: 20px;
+
+    .titleContainer {
+      @include flexbox.flexbox(start,start);
+      flex-direction: column;
+      row-gap: 8px;
+
+      .title {
+        font-size: 30px;
+      }
+
+      .subTitleContainer {
+        @include flexbox.flexbox(start);
+        column-gap: 15px;
+
+        .genres {
+          @include flexbox.flexbox;
+          column-gap: 5px;
+
+          li {
+            /* stylelint-disable-next-line max-nesting-depth */
+            &:not(:last-child)::after {
+              content: ',';
+            }
+          }
+        }
+      }
+    }
+
+    .tagline {
+      font: italic 1.2em 'Fira Sans', serif;
+      font-size: 20px;
+      color: colors.$GRAYA;
+    }
+
+    .overview {
+      max-width: 800px;
+      font-size: 18px;
+    }
+  }
+}
