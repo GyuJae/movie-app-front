@@ -1,0 +1,28 @@
+@use '/src/styles/constants/colors';
+@use '/src/styles/mixins/flexbox';
+
+.container {
+  @include flexbox.flexbox;
+  position: relative;
+  width: 50px;
+  height: 50px;
+  background-color: colors.$GRAY3;
+  border-radius: 50%;
+
+  svg {
+    width: 20px;
+    fill: colors.$GRAY7;
+  }
+
+  &.bigAvatar {
+    width: 60px;
+    height: 60px;
+  }
+
+  img {
+    position: absolute;
+    width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+}
