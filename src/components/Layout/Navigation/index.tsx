@@ -1,4 +1,6 @@
+import { isLoggedinVar } from 'apollo'
 import { useMemo } from 'react'
+import Logout from './Logout'
 import styles from './navigation.module.scss'
 import NavItem from './NavItem'
 
@@ -34,8 +36,11 @@ const Navigation = () => {
   )
   return (
     <nav className={styles.wrapper}>
-      <h3>menu</h3>
-      {NavItemList}
+      <div>
+        <h3>menu</h3>
+        {NavItemList}
+      </div>
+      <Logout inView={!!isLoggedinVar()} />
     </nav>
   )
 }
