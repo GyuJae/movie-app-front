@@ -1,0 +1,26 @@
+@use '/src/styles/mixins/flexbox';
+@use '/src/styles/constants/colors';
+
+.wrapper {
+  @include flexbox.flexbox(start,start);
+  position: relative;
+  column-gap: 10px;
+  width: 100%;
+  padding: 10px;
+
+  .container {
+    @include flexbox.flexbox(start,start);
+    flex-direction: column;
+
+    .comment {
+      color: colors.$GRAY7;
+    }
+  }
+
+  .createdAt {
+    position: absolute;
+    right: 10px;
+    font-size: 13px;
+    color: colors.$GRAY7;
+  }
+}

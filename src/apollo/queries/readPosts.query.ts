@@ -31,7 +31,6 @@ export const READ_POSTS_QUERY = gql`
 `
 
 export interface IReadPostsPost {
-  __typename: 'PostWithCount'
   id: number
   createdAt: string
   mediaId: number
@@ -41,12 +40,10 @@ export interface IReadPostsPost {
   text: string
   vote: number
   _count: {
-    __typename: 'CountForPost'
     comments: number
     likes: number
   }
   user: {
-    __typename: 'UserEntity'
     id: number
     avatar: string | null
     username: string
@@ -54,7 +51,6 @@ export interface IReadPostsPost {
 }
 
 export interface IReadPostsOutput {
-  __typename: 'ReadPostsOutput'
   ok: boolean
   error: string | null
   totalCount: number

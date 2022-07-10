@@ -2,6 +2,7 @@ import Layout from 'components/Layout'
 import { AnimatePresence } from 'framer-motion'
 import { Route, Routes } from 'react-router-dom'
 import Community from './Community'
+import CommunityDetail from './CommunityDetail'
 import CreateAccount from './CreateAccount'
 import DetailMovie from './DetailMovie'
 import DetailTV from './DetailTV'
@@ -24,6 +25,7 @@ const App = () => {
         <Route path='/create-account' element={<CreateAccount />} />
         <Route path='/movie/:id' element={<DetailMovie />} />
         <Route path='/tv/:id' element={<DetailTV />} />
+        <Route path='/community/:id' element={<CommunityDetail />} />
       </Routes>
     </AnimatePresence>
   )

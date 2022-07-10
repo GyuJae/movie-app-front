@@ -1,0 +1,8 @@
+@use '/src/styles/mixins/flexbox';
+
+.wrapper {
+  ul.commentsList {
+    @include flexbox.flexbox(start,start);
+    flex-direction: column;
+  }
+}
