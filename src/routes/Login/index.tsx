@@ -1,4 +1,5 @@
 import { useMutation } from '@apollo/client'
+import { authTokenVar, isLoggedinVar } from 'apollo'
 import { ILoginMutation, ILoginMutationInput, ILoginoVariables, LOGIN_MUTATION } from 'apollo/mutations/login.mutation'
 import { useMemo } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
@@ -7,12 +8,16 @@ import styles from './login.module.scss'
 
 const Login = () => {
   const navigate = useNavigate()
-  const [mutate, { loading }] = useMutation<ILoginMutation, ILoginoVariables>(LOGIN_MUTATION, {
-    onCompleted: ({ login: { ok } }) => {
-      if (ok)
+  const [mutate, { loading, data }] = useMutation<ILoginMutation, ILoginoVariables>(LOGIN_MUTATION, {
+    onCompleted: ({ login: { ok, token } }) => {
+      if (ok && token) {
+        localStorage.setItem('token', token)
+        authTokenVar(token)
+        isLoggedinVar(true)
         navigate('/', {
           replace: true,
         })
+      }
     },
   })
 
@@ -48,6 +53,12 @@ const Login = () => {
     [errors.password?.type]
   )
 
+  const buttonPayload = useMemo(() => (loading ? 'loading...' : 'Log In'), [loading])
+
+  const mutateRequired = useMemo(
+    () => data?.login.error && <span className={styles.error}>{data.login.error}</span>,
+    [data?.login.error]
+  )
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
@@ -72,7 +83,7 @@ const Login = () => {
             <input id='password' type='password' placeholder='Password' {...register('password', { required: true })} />
             {passwordRequired}
           </section>
-          <button type='submit'>Log In</button>
+          <button type='submit'>{buttonPayload}</button>
         </form>
         <div className={styles.signupContainer}>
           <span>Not a member?</span>
@@ -80,6 +91,7 @@ const Login = () => {
             Sign Up
           </Link>
         </div>
+        {mutateRequired}
       </div>
     </div>
   )
