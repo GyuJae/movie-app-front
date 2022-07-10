@@ -1,0 +1,52 @@
+@use '/src/styles/mixins/flexbox';
+@use '/src/styles/constants/colors';
+
+.wrapper {
+  @include flexbox.flexbox(between,start);
+  position: relative;
+  width: 100%;
+  padding: 15px;
+
+  .container {
+    @include flexbox.flexbox(start,start);
+    flex-direction: column;
+    row-gap: 10px;
+
+    .userContainer {
+      @include flexbox.flexbox(start);
+      column-gap: 5px;
+    }
+
+    .mediaContainer {
+      .mediaTitle {
+        font-size: 18px;
+      }
+    }
+
+    .countContainer {
+      @include flexbox.flexbox;
+      position: absolute;
+      bottom: 10px;
+      column-gap: 15px;
+
+      div {
+        @include flexbox.flexbox;
+        column-gap: 5px;
+
+        svg {
+          width: 20px;
+          fill: colors.$GRAY3;
+        }
+      }
+    }
+  }
+
+  &:hover {
+    background-color: colors.$WEAKBLACK;
+  }
+
+  img.poster {
+    width: 120px;
+    border-radius: 3px;
+  }
+}

@@ -15,7 +15,7 @@ const MainHeader = () => {
     () => (
       <ul>
         {data ? (
-          <Avatar />
+          <Avatar path={data.me.user.avatar} />
         ) : (
           <Link to='/login' style={{ all: 'unset', cursor: 'pointer' }}>
             <li>login</li>
