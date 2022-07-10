@@ -6,23 +6,12 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "schema:download": "npx apollo service:download --endpoint=http://localhost:4000/graphql graphql-schema.json"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
-    ],
-    "overrides": [
-      {
-        "files": [
-          "**/*.stories.*"
-        ],
-        "rules": {
-          "import/no-anonymous-default-export": "off"
-        }
-      }
     ]
   },
   "browserslist": {
@@ -45,7 +34,7 @@
     "axios": "^0.27.2",
     "classnames": "^2.3.1",
     "framer-motion": "^6.3.16",
-    "graphql": "^15.7.2",
+    "graphql": "^16.5.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-hook-form": "^7.33.1",
@@ -56,13 +45,11 @@
     "web-vitals": "^2.1.0"
   },
   "devDependencies": {
-    "@types/graphql": "^14.5.0",
     "@types/jest": "^27.0.1",
     "@types/node": "^16.7.13",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "@types/store": "^2.0.2",
-    "apollo": "^2.34.0",
     "babel-eslint": "^10.1.0",
     "babel-plugin-named-exports-order": "^0.0.2",
     "eslint": "^8.14.0",
@@ -89,9 +76,5 @@
     "stylelint-config-standard-scss": "^3.0.0",
     "stylelint-declaration-strict-value": "^1.8.0",
     "webpack": "^5.72.1"
-  },
-  "resolutions": {
-    "graphql": "^15.7.2",
-    "**/graphql": "^15.7.2"
   }
 }

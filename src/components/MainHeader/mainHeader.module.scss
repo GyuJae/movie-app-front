@@ -2,12 +2,14 @@
 @use '/src/styles/constants/colors';
 
 .wrapper {
-  ul {
+  @include flexbox.flexbox(between, center);
+  padding: 25px 20px;
+  border-bottom: 1.5px solid colors.$WEAKBLACK;
+
+  ul.mediaContainer {
     @include flexbox.flexbox(start, center);
     column-gap: 30px;
-    padding: 25px 20px;
     color: colors.$GRAY7;
-    border-bottom: 1.5px solid colors.$WEAKBLACK;
 
     a {
       all: unset;
