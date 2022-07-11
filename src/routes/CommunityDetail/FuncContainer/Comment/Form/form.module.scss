@@ -1,0 +1,58 @@
+@use '/src/styles/mixins/flexbox';
+@use '/src/styles/constants/colors';
+
+.wrapper {
+  @include flexbox.flexbox;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba($color: #000000, $alpha: 80%);
+
+  .container {
+    @include flexbox.flexbox(start,start);
+    flex-direction: column;
+    row-gap: 15px;
+    width: 500px;
+    height: 500px;
+    padding: 10px;
+    background-color: colors.$WEAKBLACK;
+    border-radius: 10px;
+
+    h3.formTitle {
+      font-size: 20px;
+    }
+
+    form.commentForm {
+      @include flexbox.flexbox(start,end);
+      flex-direction: column;
+      row-gap: 10px;
+      width: 100%;
+
+      textarea {
+        width: 100%;
+        height: 390px;
+        color: colors.$WHITE;
+        resize: none;
+        background-color: colors.$WEAKBLACK;
+        border: none;
+      }
+
+      button {
+        padding: 10px 35px;
+        color: colors.$WHITE;
+        background-color: colors.$RED;
+        border-radius: 5px;
+
+        &:hover {
+          filter: brightness(105%);
+        }
+
+        &:active {
+          filter: brightness(95%);
+        }
+      }
+    }
+  }
+}

@@ -4,27 +4,4 @@
 .wrapper {
   @include flexbox.flexbox;
   column-gap: 5px;
-
-  button {
-    @include flexbox.flexbox;
-    column-gap: 5px;
-    width: 100%;
-    padding: 10px 0;
-    color: colors.$WHITE;
-    background-color: colors.$WEAKBLACK;
-    border-radius: 5px;
-
-    svg {
-      width: 18px;
-      fill: colors.$GRAY3;
-    }
-
-    &:hover {
-      background-color: colors.$GRAY3;
-
-      svg {
-        fill: colors.$GRAY7;
-      }
-    }
-  }
 }
