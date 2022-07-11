@@ -4,6 +4,7 @@
 .wrapper {
   @include flexbox.flexbox(between);
   column-gap: 10px;
+  width: 100%;
 
   .container {
     @include flexbox.flexbox;

@@ -2,9 +2,11 @@
 @use '/src/styles/constants/colors';
 
 .wrapper {
+  @include flexbox.flexbox(between, start);
   position: fixed;
   right: 0;
   z-index: 100;
+  flex-direction: column;
   width: 250px;
   height: 100vh;
   padding: 15px;

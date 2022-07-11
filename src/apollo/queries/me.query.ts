@@ -13,7 +13,6 @@ export const ME_QUERY = gql`
   }
 `
 export interface userOutput {
-  __typename: 'UserEntity'
   id: number
   avatar: string | null
   email: string
@@ -21,7 +20,6 @@ export interface userOutput {
 }
 
 export interface meQuery {
-  __typename: 'MeOutput'
   me: {
     user: userOutput
   }
