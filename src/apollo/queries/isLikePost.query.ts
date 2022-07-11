@@ -1,0 +1,27 @@
+import { gql } from '@apollo/client'
+
+export const IS_LIKE_QUERY = gql`
+  query IsLikePost($input: IsLikePostInput!) {
+    isLikePost(input: $input) {
+      isLike
+    }
+  }
+`
+
+export interface IIsLisPostOutput {
+  ok: boolean
+  error: string | null
+  isLike: boolean
+}
+
+export interface IIsLikePost {
+  isLikePost: IIsLisPostOutput
+}
+
+export interface IIsLikePostInput {
+  postId: number
+}
+
+export interface IIsLikePostVariables {
+  input: IIsLikePostInput
+}

@@ -1,12 +1,11 @@
-import { CommentIcon, HeartIcon } from 'assets/svgs'
+import { CommentIcon } from 'assets/svgs'
 import styles from './funcContainer.module.scss'
+import Heart from './Heart'
 
 const FuncContainer = () => {
   return (
     <div className={styles.wrapper}>
-      <button type='button'>
-        <HeartIcon /> Like
-      </button>
+      <Heart />
       <button type='button'>
         <CommentIcon />
         Comment

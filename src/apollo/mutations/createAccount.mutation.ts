@@ -10,7 +10,6 @@ export const CREATE_ACCOUNT_MUTATION = gql`
 `
 
 export interface ICreateAccountOutput {
-  __typename: 'CreateAccountOutput'
   ok: boolean
   error: string | null
 }
