@@ -1,4 +1,5 @@
 import { useMutation } from '@apollo/client'
+import { isLoggedinVar } from 'apollo'
 import { ILikeToggleMutation, ILikeToggleVariables, LIKE_TOGGLE_MUTATION } from 'apollo/mutations/likeToggle.mutation'
 import { HeartIcon } from 'assets/svgs'
 import { useIsLikePost } from 'hooks/posts'
@@ -38,7 +39,7 @@ const Heart = () => {
     },
   })
   const handleClickLikeToggle = () => {
-    if (loading) return
+    if (loading && !isLoggedinVar()) return
     mutate({
       variables: {
         input: {
