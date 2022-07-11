@@ -11,3 +11,15 @@ export const opacityVariants: Variants = {
     opacity: 0,
   },
 }
+
+export const userContainerVariants: Variants = {
+  initial: {
+    x: 400,
+  },
+  animate: {
+    x: 0,
+  },
+  exit: {
+    x: 400,
+  },
+}

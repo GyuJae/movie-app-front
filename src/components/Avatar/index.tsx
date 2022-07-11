@@ -6,7 +6,7 @@ import styles from './avatar.module.scss'
 
 interface IProps {
   size?: 's'
-  path: string | null
+  path?: string | null
 }
 
 const Avatar = ({ size = 's', path }: IProps) => {

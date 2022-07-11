@@ -1,3 +1,4 @@
+import { isOpenUserContainerVar } from 'apollo'
 import Avatar from 'components/Avatar'
 import { useMe } from 'hooks/useMe'
 import { useMemo } from 'react'
@@ -26,6 +27,10 @@ const MainHeader = () => {
     [data]
   )
 
+  const handleClickOpenUserContainer = () => {
+    isOpenUserContainerVar(true)
+  }
+
   return (
     <header className={cx(styles.wrapper, { [styles.isLoggedIn]: !!data })}>
       <ul className={styles.mediaContainer}>
@@ -36,7 +41,9 @@ const MainHeader = () => {
           <li className={cx({ [styles.current]: mediaType === 'tv' })}>TV Shows</li>
         </Link>
       </ul>
-      {authList}
+      <button type='button' onClick={handleClickOpenUserContainer} className={styles.authButton}>
+        {authList}
+      </button>
     </header>
   )
 }

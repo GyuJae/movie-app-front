@@ -5,6 +5,7 @@ const TOKEN = localStorage.getItem('token')
 
 export const isLoggedinVar = makeVar(!!TOKEN)
 export const authTokenVar = makeVar(TOKEN)
+export const isOpenUserContainerVar = makeVar(false)
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:4000/graphql',
@@ -28,6 +29,11 @@ export const client = new ApolloClient({
           isLoggedIn: {
             read() {
               return isLoggedinVar()
+            },
+          },
+          isOpenUserContainer: {
+            read() {
+              return isOpenUserContainerVar()
             },
           },
         },

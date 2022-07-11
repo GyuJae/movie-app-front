@@ -1,0 +1,31 @@
+@use '/src/styles/mixins/flexbox';
+@use '/src/styles/constants/colors';
+
+.wrapper {
+  @include flexbox.flexbox(between);
+  column-gap: 10px;
+
+  .container {
+    @include flexbox.flexbox;
+    column-gap: 10px;
+  }
+
+  .nameContainer {
+    @include flexbox.flexbox(start,start);
+    flex-direction: column;
+
+    .username {
+      font-size: 18px;
+    }
+
+    .email {
+      font-size: 13px;
+      color: colors.$GRAY7;
+    }
+  }
+
+  svg.pencli {
+    width: 12px;
+    fill: colors.$GRAY7;
+  }
+}
