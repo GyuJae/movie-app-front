@@ -9,13 +9,13 @@
   svg.bookmark {
     width: 18px;
     fill: colors.$GRAY7;
+
+    &.isBookmarked {
+      fill: colors.$RED;
+    }
   }
 
   &:hover {
     background-color: rgba($color: #777777, $alpha: 50%);
-
-    svg.bookmark {
-      fill: colors.$GRAY3;
-    }
   }
 }

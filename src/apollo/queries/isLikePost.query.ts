@@ -8,14 +8,14 @@ export const IS_LIKE_QUERY = gql`
   }
 `
 
-export interface IIsLisPostOutput {
+export interface IIsLikePostOutput {
   ok: boolean
   error: string | null
   isLike: boolean
 }
 
 export interface IIsLikePost {
-  isLikePost: IIsLisPostOutput
+  isLikePost: IIsLikePostOutput
 }
 
 export interface IIsLikePostInput {
