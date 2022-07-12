@@ -7,6 +7,7 @@ import CreateAccount from './CreateAccount'
 import DetailMovie from './DetailMovie'
 import DetailTV from './DetailTV'
 import Discovery from './Discovery'
+import EditProfile from './EditProfile'
 import Home from './Home'
 import Login from './Login'
 import Search from './Search'
@@ -22,6 +23,7 @@ const App = () => {
           <Route path='/search' element={<Search />} />
         </Route>
         <Route path='/login' element={<Login />} />
+        <Route path='/edit-profile' element={<EditProfile />} />
         <Route path='/create-account' element={<CreateAccount />} />
         <Route path='/movie/:id' element={<DetailMovie />} />
         <Route path='/tv/:id' element={<DetailTV />} />

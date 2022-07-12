@@ -14,8 +14,7 @@ interface IProps {
 
 const MediaItem = ({ data }: IProps) => {
   const posterImage = useMemo(
-    () =>
-      data.posterPath ? <img alt={data.title} src={getMediaImage({ path: data.posterPath, format: 'w300' })} /> : null,
+    () => data.posterPath && <img alt={data.title} src={getMediaImage({ path: data.posterPath, format: 'w300' })} />,
     [data.posterPath, data.title]
   )
   return (

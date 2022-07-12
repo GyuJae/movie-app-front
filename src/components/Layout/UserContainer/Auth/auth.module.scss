@@ -28,5 +28,9 @@
   svg.pencli {
     width: 12px;
     fill: colors.$GRAY7;
+
+    &:hover {
+      fill: colors.$GRAY3;
+    }
   }
 }
