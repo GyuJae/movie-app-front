@@ -1,3 +1,4 @@
+import MediaDetailFun from 'components/MediaDetailFun'
 import { useMovie } from 'hooks/movies'
 import { useMemo } from 'react'
 import { useParams } from 'react-router-dom'
@@ -60,6 +61,16 @@ const Main = () => {
           <div className={styles.overview}>
             <span>{data.overview}</span>
           </div>
+          <MediaDetailFun
+            mediaInput={{
+              mediaId: data.id,
+              mediaType: 'movie',
+              posterPath: data.poster_path as string,
+              releaseDate: data.release_date,
+              title: data.title,
+              vote: data.vote_average,
+            }}
+          />
         </div>
       </div>
     </div>
