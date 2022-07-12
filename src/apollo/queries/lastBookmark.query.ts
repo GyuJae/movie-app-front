@@ -18,9 +18,10 @@ export const LAST_BOOKMARK_QUERY = gql`
 
 export interface ILastBookmarkBookmark {
   id: number
-  avatar: string | null
-  email: string
-  username: string
+  mediaId: number
+  mediaType: 'movie' | 'tv'
+  posterPath: string
+  title: string
 }
 
 export interface ILastBookmark {

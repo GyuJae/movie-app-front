@@ -1,4 +1,5 @@
 import { useMutation } from '@apollo/client'
+import { isLoggedinVar } from 'apollo'
 import {
   CREATE_BOOKMARK_MUTATION,
   ICreateBookmarkInput,
@@ -63,7 +64,7 @@ const Bookmarked = ({ mediaInput }: IProps) => {
   const { data } = useIsMeBookmark(mediaInput.mediaId)
 
   const handleClickBookmark = () => {
-    if (createBookmarkLoading || deleteBookmarkLoading) return
+    if (createBookmarkLoading || deleteBookmarkLoading || !isLoggedinVar()) return
     if (!data?.isMeBookmark.isBookmarked) {
       createBookmarkMutate({
         variables: {
