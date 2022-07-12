@@ -7,6 +7,7 @@ import { useReactiveVar } from '@apollo/client'
 import styles from './userContainer.module.scss'
 import Auth from './Auth'
 import LastBookmark from './LastBookmark'
+import Recent from './Recent'
 
 const UserContainer = () => {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -29,7 +30,10 @@ const UserContainer = () => {
         className={styles.wrapper}
       >
         <Auth />
-        <LastBookmark />
+        <div className={styles.mediaContainer}>
+          <Recent />
+          <LastBookmark />
+        </div>
       </motion.div>
     </AnimatePresence>
   )

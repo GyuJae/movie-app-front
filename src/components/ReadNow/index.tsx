@@ -20,7 +20,7 @@ const ReadNow = (props: IProps) => {
 
   const saveRecents = useCallback(
     (views: IMediaSave[]) => {
-      const result = [{ mediaId, mediaType, posterPath, title }, ...views]
+      const result = [{ mediaId, mediaType, posterPath, title }, ...views.slice(0, 20)]
       recentViewsVar(result)
       localStorage.setItem('recents', JSON.stringify(result))
     },

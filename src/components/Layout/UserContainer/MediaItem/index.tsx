@@ -23,7 +23,9 @@ const MediaItem = ({ data }: IProps) => {
       {posterImage}
       <div className={styles.subContainer}>
         <span>{data.title}</span>
-        <ReadNow {...data} />
+        <div className={styles.readNowContainer}>
+          <ReadNow {...data} />
+        </div>
       </div>
     </div>
   )

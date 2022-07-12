@@ -11,4 +11,12 @@
   height: 100vh;
   padding: 15px;
   background-color: colors.$WEAKBLACK;
+
+  .mediaContainer {
+    width: 100%;
+
+    div + div {
+      margin-top: 10px;
+    }
+  }
 }
