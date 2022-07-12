@@ -32,7 +32,7 @@ const TVItem = ({ tv }: IProps) => {
         </div>
       </div>
       <div className={styles.readMoreContainer}>
-        <ReadMore mediaId={tv.id} mediaType='tv' />
+        <ReadMore mediaId={tv.id} mediaType='tv' posterPath={tv.poster_path} title={tv.name} />
       </div>
     </motion.div>
   )

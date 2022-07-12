@@ -1,9 +1,11 @@
 @use '/src/styles/mixins/flexbox';
+@use '/src/styles/constants/colors';
 
 .container {
   position: relative;
-  width: 230px;
+  width: 100%;
   height: 230px;
+  background-color: colors.$WEAKBLACK;
 
   img {
     position: absolute;

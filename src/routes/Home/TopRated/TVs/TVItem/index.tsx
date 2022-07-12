@@ -29,7 +29,7 @@ const TVItem = ({ tv }: IProps) => {
       <div className={styles.container}>
         <span className={styles.title}>{tv.name}</span>
         {date}
-        <ReadNow mediaId={tv.id} mediaType='tv' />
+        <ReadNow mediaId={tv.id} mediaType='tv' title={tv.name} posterPath={tv.poster_path} />
       </div>
     </div>
   )

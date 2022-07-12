@@ -1,4 +1,5 @@
 import { gql } from '@apollo/client'
+import { IMediaSave } from 'types/mediaSave'
 
 export const LAST_BOOKMARK_QUERY = gql`
   query LastBookmark {
@@ -16,12 +17,8 @@ export const LAST_BOOKMARK_QUERY = gql`
   }
 `
 
-export interface ILastBookmarkBookmark {
+export interface ILastBookmarkBookmark extends IMediaSave {
   id: number
-  mediaId: number
-  mediaType: 'movie' | 'tv'
-  posterPath: string
-  title: string
 }
 
 export interface ILastBookmark {

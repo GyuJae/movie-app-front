@@ -35,7 +35,7 @@ const MovieItem = ({ movie }: IProps) => {
         </div>
       </div>
       <div className={styles.readMoreContainer}>
-        <ReadMore mediaId={movie.id} mediaType='movie' />
+        <ReadMore mediaId={movie.id} mediaType='movie' title={movie.title} posterPath={movie.poster_path} />
       </div>
     </motion.div>
   )
