@@ -28,7 +28,7 @@ const MainHeader = () => {
   )
 
   const handleClickOpenUserContainer = () => {
-    isOpenUserContainerVar(true)
+    if (data) isOpenUserContainerVar(true)
   }
 
   return (

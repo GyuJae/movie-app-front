@@ -5,6 +5,11 @@ import {
   ICreateBookmarkMutation,
   ICreateBookmarkVariables,
 } from 'apollo/mutations/createBookmark.mutation'
+import {
+  DELETE_BOOKMARK_MUTATION,
+  IDeleteBookmarkMutation,
+  IDeleteBookmarkVariables,
+} from 'apollo/mutations/deleteBookmark.mutation'
 import { BookmarkIcon } from 'assets/svgs'
 import { useIsMeBookmark } from 'hooks/bookmarks'
 import { cx } from 'styles'
@@ -15,30 +20,50 @@ interface IProps {
 }
 
 const Bookmarked = ({ mediaInput }: IProps) => {
-  const [createBookmarkMutate, { loading }] = useMutation<ICreateBookmarkMutation, ICreateBookmarkVariables>(
-    CREATE_BOOKMARK_MUTATION,
-    {
-      update(cache, { data: isBookmarkedData }) {
-        if (isBookmarkedData?.createBookmark.ok) {
-          cache.modify({
-            id: 'ROOT_QUERY',
-            fields: {
-              isMeBookmark() {
-                return {
-                  isBookmarked: true,
-                }
-              },
+  const [createBookmarkMutate, { loading: createBookmarkLoading }] = useMutation<
+    ICreateBookmarkMutation,
+    ICreateBookmarkVariables
+  >(CREATE_BOOKMARK_MUTATION, {
+    update(cache, { data: createData }) {
+      if (createData?.createBookmark.ok) {
+        cache.modify({
+          id: 'ROOT_QUERY',
+          fields: {
+            isMeBookmark() {
+              return {
+                isBookmarked: true,
+              }
             },
-          })
-        }
-      },
-    }
-  )
+          },
+        })
+      }
+    },
+  })
+
+  const [delteBookmarkMutate, { loading: deleteBookmarkLoading }] = useMutation<
+    IDeleteBookmarkMutation,
+    IDeleteBookmarkVariables
+  >(DELETE_BOOKMARK_MUTATION, {
+    update(cache, { data: deleteData }) {
+      if (deleteData?.deleteBookmark.ok) {
+        cache.modify({
+          id: 'ROOT_QUERY',
+          fields: {
+            isMeBookmark() {
+              return {
+                isBookmarked: false,
+              }
+            },
+          },
+        })
+      }
+    },
+  })
 
   const { data } = useIsMeBookmark(mediaInput.mediaId)
 
   const handleClickBookmark = () => {
-    if (loading) return
+    if (createBookmarkLoading || deleteBookmarkLoading) return
     if (!data?.isMeBookmark.isBookmarked) {
       createBookmarkMutate({
         variables: {
@@ -46,7 +71,13 @@ const Bookmarked = ({ mediaInput }: IProps) => {
         },
       })
     } else {
-      console.log('DELETE')
+      delteBookmarkMutate({
+        variables: {
+          input: {
+            mediaId: mediaInput.mediaId,
+          },
+        },
+      })
     }
   }
 

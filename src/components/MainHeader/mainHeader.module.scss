@@ -6,6 +6,11 @@
   padding: 25px 20px;
   border-bottom: 1.5px solid colors.$WEAKBLACK;
 
+  .authButton {
+    font-size: 15px;
+    color: colors.$WHITE;
+  }
+
   &.isLoggedIn {
     padding: 15px 20px;
   }
