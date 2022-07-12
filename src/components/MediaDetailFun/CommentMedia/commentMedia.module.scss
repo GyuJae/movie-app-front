@@ -1,0 +1,22 @@
+@use '/src/styles/constants/colors';
+@use '/src/styles/mixins/flexbox';
+
+.wrapper {
+  @include flexbox.flexbox;
+  padding: 10px 11px;
+  border-radius: 50%;
+
+  svg.pencli {
+    width: 18px;
+    fill: colors.$GRAY7;
+  }
+
+  &:hover {
+    background-color: rgba($color: #777777, $alpha: 50%);
+
+    svg.pencli {
+      width: 18px;
+      fill: colors.$RED;
+    }
+  }
+}

@@ -2,5 +2,5 @@
 
 .wrapper {
   @include flexbox.flexbox;
-  background-color: transparent;
+  column-gap: 5px;
 }

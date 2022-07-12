@@ -1,0 +1,19 @@
+@use '/src/styles/constants/colors';
+
+.container {
+  svg {
+    width: 25px;
+
+    &.none {
+      fill: colors.$GRAY7;
+    }
+
+    &.full {
+      fill: colors.$RED;
+    }
+  }
+
+  svg.half {
+    fill: colors.$RED;
+  }
+}
