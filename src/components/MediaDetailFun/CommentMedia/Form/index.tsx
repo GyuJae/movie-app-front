@@ -1,3 +1,5 @@
+import { useMutation } from '@apollo/client'
+import { CREATE_POST_MUTATION, ICreatePostMutation, ICreatePostVariables } from 'apollo/mutations/createPost.mutation'
 import { useRef } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useClickAway } from 'react-use'
@@ -8,6 +10,12 @@ import StarVote from './StarVote'
 interface IProps {
   inView: boolean
   handleClickCloseForm: () => void
+  mediaInput: {
+    mediaId: number
+    mediaTitle: string
+    mediaType: 'movie' | 'tv'
+    posterPath: string
+  }
 }
 
 interface IForm {
@@ -15,22 +23,39 @@ interface IForm {
   vote: number
 }
 
-const Form = ({ inView, handleClickCloseForm }: IProps) => {
+const Form = ({ inView, handleClickCloseForm, mediaInput }: IProps) => {
   const containerRef = useRef<HTMLDivElement>(null)
   useClickAway(containerRef, handleClickCloseForm)
 
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { isValid },
     watch,
   } = useForm<IForm>({
     mode: 'onChange',
   })
 
-  const onSubmit: SubmitHandler<IForm> = (input) => {}
+  const [createPostMutate, { loading }] = useMutation<ICreatePostMutation, ICreatePostVariables>(CREATE_POST_MUTATION)
+
+  const onSubmit: SubmitHandler<IForm> = (input) => {
+    if (loading) return
+    createPostMutate({
+      variables: {
+        input: {
+          ...mediaInput,
+          ...input,
+        },
+      },
+    })
+    setValue('text', '')
+    handleClickCloseForm()
+  }
 
   const starVote = watch('vote')
+
+  const buttonPayload = loading ? 'loading...' : 'Save'
 
   if (!inView) return null
   return (
@@ -47,12 +72,12 @@ const Form = ({ inView, handleClickCloseForm }: IProps) => {
                 max={5}
                 step={0.5}
                 className={styles.rangeInput}
-                {...register('vote', { required: true, min: 0, max: 5 })}
+                {...register('vote', { required: true, min: 0, max: 5, valueAsNumber: true })}
               />
               <StarVote vote={starVote} />
             </div>
             <button type='submit' className={cx(styles.saveButton, { [styles.isValid]: isValid })}>
-              Save
+              {buttonPayload}
             </button>
           </div>
         </form>

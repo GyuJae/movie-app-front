@@ -11,7 +11,14 @@ const MediaDetailFun = ({ mediaInput }: IProps) => {
   return (
     <div className={styles.wrapper}>
       <Bookmarked mediaInput={mediaInput} />
-      <CommentMedia />
+      <CommentMedia
+        mediaInput={{
+          mediaId: mediaInput.mediaId,
+          mediaTitle: mediaInput.title,
+          mediaType: mediaInput.mediaType,
+          posterPath: mediaInput.posterPath,
+        }}
+      />
     </div>
   )
 }
