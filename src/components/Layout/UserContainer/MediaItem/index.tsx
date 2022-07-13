@@ -6,7 +6,7 @@ import styles from './mediaItem.module.scss'
 interface IProps {
   data: {
     title: string
-    posterPath?: string
+    posterPath?: string | null
     mediaId: number
     mediaType: 'movie' | 'tv'
   }

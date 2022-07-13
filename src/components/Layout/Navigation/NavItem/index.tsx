@@ -1,4 +1,4 @@
-import { CompassIcon, HomeIcon, SearchIcon, UsersIcon } from 'assets/svgs'
+import { BookOpenIcon, CompassIcon, HomeIcon, SearchIcon, UsersIcon } from 'assets/svgs'
 import { AnimatePresence, motion, Variants } from 'framer-motion'
 import { memo, useMemo } from 'react'
 import { Link, useLocation } from 'react-router-dom'
@@ -31,6 +31,7 @@ const NavItem = ({ name, pathname }: IProps) => {
     Discovery: <CompassIcon />,
     Community: <UsersIcon />,
     Search: <SearchIcon />,
+    Library: <BookOpenIcon />,
   }[name]
   const { pathname: location } = useLocation()
   const RedBar = useMemo(

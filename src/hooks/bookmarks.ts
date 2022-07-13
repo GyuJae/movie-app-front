@@ -2,6 +2,7 @@ import { IS_ME_BOOKMARK_QUERY, IIsMeBookmark, IIsMeBookmarkVariables } from 'apo
 import { useQuery } from '@apollo/client'
 
 import { ILastBookmark, LAST_BOOKMARK_QUERY } from 'apollo/queries/lastBookmark.query'
+import { IReadBookmarksQuery, READ_BOOKMARKS_QUERY } from 'apollo/queries/readBookmarks.query'
 
 export const useLastBookmark = () => {
   return useQuery<ILastBookmark>(LAST_BOOKMARK_QUERY)
@@ -15,4 +16,8 @@ export const useIsMeBookmark = (mediaId: number) => {
       },
     },
   })
+}
+
+export const useReadBookmarks = () => {
+  return useQuery<IReadBookmarksQuery>(READ_BOOKMARKS_QUERY)
 }

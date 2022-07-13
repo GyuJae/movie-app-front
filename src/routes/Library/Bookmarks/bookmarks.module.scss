@@ -1,0 +1,12 @@
+@use '/src/styles/mixins/flexbox';
+
+.wrapper {
+  @include flexbox.flexbox(start,start);
+  flex-direction: column;
+  row-gap: 10px;
+
+  h3.title {
+    font-size: 20px;
+    font-weight: 700;
+  }
+}

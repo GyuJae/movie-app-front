@@ -15,8 +15,10 @@ const CommunityItem = ({ post, hoverBG = true }: IProps) => {
       <div className={styles.container}>
         <div className={styles.userContainer}>
           <Avatar path={post.user.avatar} />
-          <span>{post.user.username}</span>
-          <span>{dayjs(post.createdAt).format('YYYY-MM-DD')}</span>
+          <div className={styles.infoContainer}>
+            <span>{post.user.username}</span>
+            <span className={styles.createdAt}>{dayjs(post.createdAt).format('YYYY-MM-DD')}</span>
+          </div>
         </div>
         <div className={styles.mediaContainer}>
           <span className={styles.mediaTitle}>{post.mediaTitle}</span>

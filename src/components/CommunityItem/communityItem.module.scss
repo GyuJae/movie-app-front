@@ -15,6 +15,16 @@
     .userContainer {
       @include flexbox.flexbox(start);
       column-gap: 5px;
+
+      .infoContainer {
+        @include flexbox.flexbox(start, start);
+        flex-direction: column;
+
+        .createdAt {
+          font-size: 13px;
+          color: colors.$GRAY7;
+        }
+      }
     }
 
     .mediaContainer {

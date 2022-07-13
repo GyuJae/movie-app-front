@@ -1,0 +1,11 @@
+@use '/src/styles/mixins/flexbox';
+
+.wrapper {
+  padding: 15px;
+
+  .mediaContainer {
+    @include flexbox.flexbox(start,start);
+    flex-direction: column;
+    row-gap: 15px;
+  }
+}

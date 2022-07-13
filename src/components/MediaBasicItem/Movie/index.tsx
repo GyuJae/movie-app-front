@@ -11,14 +11,14 @@ interface IProps {
 const Movie = ({ movie }: IProps) => {
   const backgroundImage = useMemo(
     () =>
-      movie.backdrop_path ? (
+      movie.backdrop_path && (
         <img alt={movie.title} src={getMediaImage({ path: movie.backdrop_path, format: 'w500' })} />
-      ) : null,
+      ),
     [movie.backdrop_path, movie.title]
   )
 
   const date = useMemo(
-    () => (movie.release_date ? <span className={styles.date}>{movie.release_date.split('-')[0]}</span> : null),
+    () => movie.release_date && <span className={styles.date}>{movie.release_date.split('-')[0]}</span>,
     [movie.release_date]
   )
   return (

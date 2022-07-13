@@ -11,6 +11,8 @@ import {
   IDeleteBookmarkMutation,
   IDeleteBookmarkVariables,
 } from 'apollo/mutations/deleteBookmark.mutation'
+import { LAST_BOOKMARK_QUERY } from 'apollo/queries/lastBookmark.query'
+import { READ_BOOKMARKS_QUERY } from 'apollo/queries/readBookmarks.query'
 import { BookmarkIcon } from 'assets/svgs'
 import { useIsMeBookmark } from 'hooks/bookmarks'
 import { cx } from 'styles'
@@ -39,6 +41,7 @@ const Bookmarked = ({ mediaInput }: IProps) => {
         })
       }
     },
+    refetchQueries: [READ_BOOKMARKS_QUERY, LAST_BOOKMARK_QUERY],
   })
 
   const [delteBookmarkMutate, { loading: deleteBookmarkLoading }] = useMutation<
@@ -59,6 +62,7 @@ const Bookmarked = ({ mediaInput }: IProps) => {
         })
       }
     },
+    refetchQueries: [READ_BOOKMARKS_QUERY, LAST_BOOKMARK_QUERY],
   })
 
   const { data } = useIsMeBookmark(mediaInput.mediaId)

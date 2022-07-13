@@ -1,6 +1,6 @@
 export interface IMediaSave {
   mediaId: number
   mediaType: 'movie' | 'tv'
-  posterPath?: string
+  posterPath?: string | null
   title: string
 }

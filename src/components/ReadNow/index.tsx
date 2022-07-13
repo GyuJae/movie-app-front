@@ -9,7 +9,7 @@ import styles from './readNow.module.scss'
 interface IProps {
   mediaType: TMediaType
   mediaId: number
-  posterPath?: string
+  posterPath?: string | null
   title: string
 }
 
