@@ -3,8 +3,8 @@ import MediaItem from '../MediaItem'
 import styles from './lastBookmark.module.scss'
 
 const LastBookmark = () => {
-  const { data } = useLastBookmark()
-  if (!data) return null
+  const { data, error } = useLastBookmark()
+  if (!data || !data.lastBookmark.bookmark || error) return null
   return (
     <div className={styles.wrapper}>
       <h3>Bookmarked</h3>
