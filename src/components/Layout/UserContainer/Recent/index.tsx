@@ -1,4 +1,5 @@
 import { recentViewsVar } from 'apollo'
+import { Link } from 'react-router-dom'
 import MediaItem from '../MediaItem'
 import styles from './recent.module.scss'
 
@@ -7,7 +8,10 @@ const Recent = () => {
   if (!data) return null
   return (
     <div className={styles.wrapper}>
-      <h3>Recent View</h3>
+      <div className={styles.headerContainer}>
+        <h3>Recent View</h3>
+        <Link to='/library'>See All</Link>
+      </div>
       <MediaItem
         data={{
           title: data.title,

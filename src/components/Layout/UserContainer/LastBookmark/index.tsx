@@ -1,4 +1,5 @@
 import { useLastBookmark } from 'hooks/bookmarks'
+import { Link } from 'react-router-dom'
 import MediaItem from '../MediaItem'
 import styles from './lastBookmark.module.scss'
 
@@ -7,7 +8,10 @@ const LastBookmark = () => {
   if (!data || !data.lastBookmark.bookmark || error) return null
   return (
     <div className={styles.wrapper}>
-      <h3>Bookmarked</h3>
+      <div className={styles.headerContainer}>
+        <h3>Bookmarked</h3>
+        <Link to='/library'>See All</Link>
+      </div>
       <MediaItem
         data={{
           title: data.lastBookmark.bookmark.title,
