@@ -5,16 +5,25 @@
   @include flexbox.flexbox;
   width: 60px;
   height: 200px;
-  color: colors.$WHITE;
   background-color: colors.$RED;
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
 
-  &:hover {
-    filter: brightness(105%);
-  }
+  .container {
+    @include flexbox.flexbox;
+    width: 60px;
+    height: 200px;
+    color: colors.$WHITE;
+    background-color: colors.$RED;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
 
-  &:active {
-    filter: brightness(95%);
+    &:hover {
+      filter: brightness(105%);
+    }
+
+    &:active {
+      filter: brightness(95%);
+    }
   }
 }

@@ -12,13 +12,15 @@ const InfiniteReadMore = ({ inView, handleClickNextPage, isFetching, isMarginTop
   const payload = isFetching ? 'loading...' : 'Read More'
   if (!inView) return null
   return (
-    <button
-      type='button'
-      className={cx(styles.wrapper, { [styles.isMarginTop]: isMarginTop })}
-      onClick={handleClickNextPage}
-    >
-      {payload}
-    </button>
+    <div className={styles.wrapper}>
+      <button
+        type='button'
+        className={cx(styles.container, { [styles.isMarginTop]: isMarginTop })}
+        onClick={handleClickNextPage}
+      >
+        {payload}
+      </button>
+    </div>
   )
 }
 

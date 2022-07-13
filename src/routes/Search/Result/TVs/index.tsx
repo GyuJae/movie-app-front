@@ -25,9 +25,7 @@ const TVs = () => {
       <h3>TV Shows</h3>
       <Carousel dragConstraints={350 * (pages?.length ? pages.length * 20 : 20)}>
         {pages}
-        <div className={styles.btnContainer}>
-          <InfiniteReadMore inView={!!hasNextPage} handleClickNextPage={handleClickNextPage} isFetching={isFetching} />
-        </div>
+        <InfiniteReadMore inView={!!hasNextPage} handleClickNextPage={handleClickNextPage} isFetching={isFetching} />
       </Carousel>
     </div>
   )

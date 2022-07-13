@@ -1,5 +1,6 @@
 import { useMutation } from '@apollo/client'
 import { CREATE_POST_MUTATION, ICreatePostMutation, ICreatePostVariables } from 'apollo/mutations/createPost.mutation'
+import { READ_POSTS_QUERY } from 'apollo/queries/readPosts.query'
 import { useRef } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useClickAway } from 'react-use'
@@ -37,7 +38,9 @@ const Form = ({ inView, handleClickCloseForm, mediaInput }: IProps) => {
     mode: 'onChange',
   })
 
-  const [createPostMutate, { loading }] = useMutation<ICreatePostMutation, ICreatePostVariables>(CREATE_POST_MUTATION)
+  const [createPostMutate, { loading }] = useMutation<ICreatePostMutation, ICreatePostVariables>(CREATE_POST_MUTATION, {
+    refetchQueries: [READ_POSTS_QUERY],
+  })
 
   const onSubmit: SubmitHandler<IForm> = (input) => {
     if (loading) return

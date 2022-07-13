@@ -2,6 +2,7 @@
 @use '/src/styles/mixins/flexbox';
 
 .wrapper {
+  overflow: hidden;
   color: colors.$WHITE;
   background-color: colors.$BLACK;
 }

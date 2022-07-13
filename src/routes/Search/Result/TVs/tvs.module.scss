@@ -11,13 +11,4 @@
     font-size: 20px;
     font-weight: 500;
   }
-
-  .btnContainer {
-    @include flexbox.flexbox;
-    width: 60px;
-    height: 200px;
-    background-color: colors.$RED;
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
-  }
 }
