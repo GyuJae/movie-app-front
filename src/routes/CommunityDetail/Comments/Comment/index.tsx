@@ -2,6 +2,7 @@ import { IReadPostDetailComment } from 'apollo/queries/readPostDetail.query'
 import Avatar from 'components/Avatar'
 import dayjs from 'dayjs'
 import styles from './comment.module.scss'
+import Delete from './Delete'
 
 interface IProps {
   comment: IReadPostDetailComment
@@ -9,12 +10,15 @@ interface IProps {
 const Comment = ({ comment }: IProps) => {
   return (
     <div className={styles.wrapper}>
-      <Avatar path={comment.user.avatar} />
-      <div className={styles.container}>
-        <span>{comment.user.username}</span>
-        <span className={styles.comment}>{comment.comment}</span>
+      <div className={styles.leftContainer}>
+        <Avatar path={comment.user.avatar} />
+        <div className={styles.container}>
+          <span>{comment.user.username}</span>
+          <span className={styles.comment}>{comment.comment}</span>
+          <span className={styles.createdAt}>{dayjs(comment.createdAt).format('YYYY-MM-DD hh:mm')}</span>
+        </div>
       </div>
-      <div className={styles.createdAt}>{dayjs(comment.createdAt).format('YYYY-MM-DD hh:mm')}</div>
+      <Delete commentId={comment.id} />
     </div>
   )
 }

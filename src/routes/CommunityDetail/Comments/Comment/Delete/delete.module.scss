@@ -1,0 +1,19 @@
+@use '/src/styles/mixins/flexbox';
+@use '/src/styles/constants/colors';
+
+.container {
+  button.trashButton {
+    @include flexbox.flexbox;
+    padding: 8px 10px;
+    border-radius: 50%;
+
+    &:hover {
+      background-color: colors.$GRAY3;
+    }
+
+    .trashCanIcon {
+      width: 15px;
+      fill: colors.$GRAY7;
+    }
+  }
+}
