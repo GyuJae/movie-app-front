@@ -1,14 +1,16 @@
-import { useMutation } from '@apollo/client'
+import { useMutation, useReactiveVar } from '@apollo/client'
 import { isLoggedinVar } from 'apollo'
 import { ILikeToggleMutation, ILikeToggleVariables, LIKE_TOGGLE_MUTATION } from 'apollo/mutations/likeToggle.mutation'
 import { HeartIcon } from 'assets/svgs'
 import { useIsLikePost } from 'hooks/posts'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { cx } from 'styles'
 import styles from './heart.module.scss'
 
 const Heart = () => {
   const { id } = useParams<Record<'id', string>>()
+  const isLoggedIn = useReactiveVar(isLoggedinVar)
+  const navigate = useNavigate()
   const { data } = useIsLikePost(id as string)
   const [mutate, { loading }] = useMutation<ILikeToggleMutation, ILikeToggleVariables>(LIKE_TOGGLE_MUTATION, {
     update(cache, { data: likeToggleData }) {
@@ -39,7 +41,11 @@ const Heart = () => {
     },
   })
   const handleClickLikeToggle = () => {
-    if (loading && !isLoggedinVar()) return
+    if (loading) return
+    if (!isLoggedIn) {
+      navigate('/login')
+      return
+    }
     mutate({
       variables: {
         input: {

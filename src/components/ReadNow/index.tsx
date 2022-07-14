@@ -1,5 +1,5 @@
 import { useReactiveVar } from '@apollo/client'
-import { recentViewsVar } from 'apollo'
+import { isLoggedinVar, recentViewsVar } from 'apollo'
 import { useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { IMediaSave } from 'types/mediaSave'
@@ -17,6 +17,7 @@ const ReadNow = (props: IProps) => {
   const { mediaId, mediaType, posterPath, title } = props
   const navigate = useNavigate()
   const recentViews = useReactiveVar(recentViewsVar)
+  const isLoggedIn = useReactiveVar(isLoggedinVar)
 
   const saveRecents = useCallback(
     (views: IMediaSave[]) => {
@@ -28,10 +29,12 @@ const ReadNow = (props: IProps) => {
   )
 
   const handleClick = () => {
-    if (!recentViews.map((i) => i.mediaId).includes(mediaId)) saveRecents(recentViews)
-    else {
-      const filterRecentViews = recentViews.filter((i) => i.mediaId !== mediaId)
-      saveRecents(filterRecentViews)
+    if (isLoggedIn) {
+      if (!recentViews.map((i) => i.mediaId).includes(mediaId)) saveRecents(recentViews)
+      else {
+        const filterRecentViews = recentViews.filter((i) => i.mediaId !== mediaId)
+        saveRecents(filterRecentViews)
+      }
     }
     navigate(`/${mediaType}/${mediaId}`)
   }

@@ -1,6 +1,9 @@
+import { useReactiveVar } from '@apollo/client'
+import { isLoggedinVar } from 'apollo'
 import Layout from 'components/Layout'
+import ProtectedRoute from 'components/ProtectedRoute'
 import { AnimatePresence } from 'framer-motion'
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import Community from './Community'
 import CommunityDetail from './CommunityDetail'
 import CreateAccount from './CreateAccount'
@@ -14,6 +17,7 @@ import Login from './Login'
 import Search from './Search'
 
 const App = () => {
+  const isLoggedIn = useReactiveVar(isLoggedinVar)
   return (
     <AnimatePresence>
       <Routes>
@@ -22,11 +26,15 @@ const App = () => {
           <Route path='/discovery' element={<Discovery />} />
           <Route path='/community' element={<Community />} />
           <Route path='/search' element={<Search />} />
-          <Route path='/library' element={<Library />} />
+          <Route element={<ProtectedRoute />}>
+            <Route path='/library' element={<Library />} />
+          </Route>
         </Route>
         <Route path='/login' element={<Login />} />
-        <Route path='/edit-profile' element={<EditProfile />} />
         <Route path='/create-account' element={<CreateAccount />} />
+        <Route element={<ProtectedRoute />}>
+          <Route path='/edit-profile' element={isLoggedIn ? <EditProfile /> : <Navigate to='/login' />} />
+        </Route>
         <Route path='/movie/:id' element={<DetailMovie />} />
         <Route path='/tv/:id' element={<DetailTV />} />
         <Route path='/community/:id' element={<CommunityDetail />} />

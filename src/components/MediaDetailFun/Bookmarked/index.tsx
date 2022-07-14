@@ -1,4 +1,4 @@
-import { useMutation } from '@apollo/client'
+import { useMutation, useReactiveVar } from '@apollo/client'
 import { isLoggedinVar } from 'apollo'
 import {
   CREATE_BOOKMARK_MUTATION,
@@ -15,6 +15,7 @@ import { LAST_BOOKMARK_QUERY } from 'apollo/queries/lastBookmark.query'
 import { READ_BOOKMARKS_QUERY } from 'apollo/queries/readBookmarks.query'
 import { BookmarkIcon } from 'assets/svgs'
 import { useIsMeBookmark } from 'hooks/bookmarks'
+import { useNavigate } from 'react-router-dom'
 import { cx } from 'styles'
 import styles from './bookmarked.module.scss'
 
@@ -23,6 +24,8 @@ interface IProps {
 }
 
 const Bookmarked = ({ mediaInput }: IProps) => {
+  const isLoggedIn = useReactiveVar(isLoggedinVar)
+  const naviate = useNavigate()
   const [createBookmarkMutate, { loading: createBookmarkLoading }] = useMutation<
     ICreateBookmarkMutation,
     ICreateBookmarkVariables
@@ -68,7 +71,11 @@ const Bookmarked = ({ mediaInput }: IProps) => {
   const { data } = useIsMeBookmark(mediaInput.mediaId)
 
   const handleClickBookmark = () => {
-    if (createBookmarkLoading || deleteBookmarkLoading || !isLoggedinVar()) return
+    if (!isLoggedIn) {
+      naviate('/login')
+      return
+    }
+    if (createBookmarkLoading || deleteBookmarkLoading) return
     if (!data?.isMeBookmark.isBookmarked) {
       createBookmarkMutate({
         variables: {
