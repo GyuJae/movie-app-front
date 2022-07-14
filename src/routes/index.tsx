@@ -30,11 +30,11 @@ const App = () => {
             <Route path='/library' element={<Library />} />
           </Route>
         </Route>
-        <Route path='/login' element={<Login />} />
-        <Route path='/create-account' element={<CreateAccount />} />
         <Route element={<ProtectedRoute />}>
           <Route path='/edit-profile' element={isLoggedIn ? <EditProfile /> : <Navigate to='/login' />} />
         </Route>
+        <Route path='/login' element={<Login />} />
+        <Route path='/create-account' element={<CreateAccount />} />
         <Route path='/movie/:id' element={<DetailMovie />} />
         <Route path='/tv/:id' element={<DetailTV />} />
         <Route path='/community/:id' element={<CommunityDetail />} />
