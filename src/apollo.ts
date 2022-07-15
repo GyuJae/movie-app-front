@@ -11,7 +11,7 @@ export const isOpenUserContainerVar = makeVar(false)
 export const recentViewsVar = makeVar<IMediaSave[]>(RESENT_VIEWS)
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:4000/graphql',
+  uri: process.env.REACT_APP_GRAPHQL_URL,
 })
 
 const authLink = setContext((_, { headers }) => {
