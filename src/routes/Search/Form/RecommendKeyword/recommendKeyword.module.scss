@@ -17,12 +17,26 @@
     font-weight: 700;
   }
 
-  ul {
+  ul.keywordList {
     @include flexbox.flexbox(start,start);
     flex-direction: column;
     row-gap: 5px;
     width: 100%;
+    max-height: 300px;
     margin-top: 5px;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      display: block;
+      width: 6px;
+      background-color: colors.$GRAY7;
+      border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: colors.$GRAY3;
+      border-radius: 10px;
+    }
 
     li {
       width: 100%;

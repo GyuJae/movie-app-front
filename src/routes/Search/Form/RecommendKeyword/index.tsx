@@ -25,7 +25,7 @@ const RecommendKeyword = ({ inView, keyword, keywordFormClean }: IProps) => {
 
   const keywordList = useMemo(
     () => (
-      <ul>
+      <ul className={styles.keywordList}>
         {data?.results.map((result) => (
           <li key={`${result.id}-${result.name}`}>
             <button type='button' onClick={handleClickKeyword} value={result.name}>
