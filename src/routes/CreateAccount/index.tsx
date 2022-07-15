@@ -107,7 +107,7 @@ const CreateAccount = () => {
           <button type='submit'>{buttonPayload}</button>
         </form>
         <div className={styles.signupContainer}>
-          <span>Not a member?</span>
+          <span>Already a member?</span>
           <Link to='/login' className={styles.link}>
             Sign In
           </Link>

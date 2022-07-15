@@ -4,9 +4,10 @@ import { useReadPosts } from 'hooks/communities'
 import { useMemo } from 'react'
 import styles from './community.module.scss'
 import Item from './Item'
+import Loading from './Loading'
 
 const Community = () => {
-  const { data } = useReadPosts({
+  const { data, loading } = useReadPosts({
     skip: 0,
     take: 25,
   })
@@ -27,6 +28,7 @@ const Community = () => {
     <motion.div className={styles.wrapper} variants={opacityVariants} initial='initial' animate='animate' exit='exit'>
       <h3>Community</h3>
       {communities}
+      <Loading inView={loading} />
     </motion.div>
   )
 }

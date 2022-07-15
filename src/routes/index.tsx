@@ -1,9 +1,7 @@
-import { useReactiveVar } from '@apollo/client'
-import { isLoggedinVar } from 'apollo'
 import Layout from 'components/Layout'
 import ProtectedRoute from 'components/ProtectedRoute'
 import { AnimatePresence } from 'framer-motion'
-import { Navigate, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import Community from './Community'
 import CommunityDetail from './CommunityDetail'
 import CreateAccount from './CreateAccount'
@@ -17,7 +15,6 @@ import Login from './Login'
 import Search from './Search'
 
 const App = () => {
-  const isLoggedIn = useReactiveVar(isLoggedinVar)
   return (
     <AnimatePresence>
       <Routes>
@@ -31,7 +28,7 @@ const App = () => {
           </Route>
         </Route>
         <Route element={<ProtectedRoute />}>
-          <Route path='/edit-profile' element={isLoggedIn ? <EditProfile /> : <Navigate to='/login' />} />
+          <Route path='/edit-profile' element={<EditProfile />} />
         </Route>
         <Route path='/login' element={<Login />} />
         <Route path='/create-account' element={<CreateAccount />} />

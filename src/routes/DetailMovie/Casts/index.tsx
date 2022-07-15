@@ -21,7 +21,7 @@ const Casts = () => {
       }),
     [data?.cast]
   )
-  const dragConstraints = useMemo(() => 80 * (data?.cast.length || 20), [data?.cast])
+  const dragConstraints = useMemo(() => 150 * (data?.cast.length || 20), [data?.cast])
   if (!data?.cast || data.cast.length === 0) return null
   return (
     <div className={styles.wrapper}>
