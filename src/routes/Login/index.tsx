@@ -62,7 +62,7 @@ const Login = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
-        <h3>Sign In</h3>
+        <h3>Log In</h3>
         <form onSubmit={handleSubmit(onSubmit)}>
           <section>
             <label htmlFor='email'>Email</label>
@@ -88,7 +88,7 @@ const Login = () => {
         <div className={styles.signupContainer}>
           <span>Not a member?</span>
           <Link to='/create-account' className={styles.link}>
-            Sign Up
+            Create Account
           </Link>
         </div>
         {mutateRequired}

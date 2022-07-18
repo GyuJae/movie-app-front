@@ -61,7 +61,7 @@ const CreateAccount = () => {
     [errors.password?.type]
   )
 
-  const buttonPayload = useMemo(() => (loading ? 'loading...' : 'Create Account'), [loading])
+  const buttonPayload = loading ? 'loading...' : 'Create Account'
 
   const mutateError = useMemo(
     () => data?.createAccount.error && <span className={styles.error}>{data.createAccount.error}</span>,
@@ -71,7 +71,7 @@ const CreateAccount = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
-        <h3>Sign In</h3>
+        <h3>Create Account</h3>
         <form onSubmit={handleSubmit(onSubmit)}>
           <section>
             <label htmlFor='email'>Email</label>
@@ -109,7 +109,7 @@ const CreateAccount = () => {
         <div className={styles.signupContainer}>
           <span>Already a member?</span>
           <Link to='/login' className={styles.link}>
-            Sign In
+            Log In
           </Link>
         </div>
         {mutateError}
