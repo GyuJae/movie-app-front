@@ -33,7 +33,9 @@ const EditProfile = () => {
   const onSubmit: SubmitHandler<IForm> = async ({ avatar, username }) => {
     if (loading) return
     if (avatar && avatar.length > 0) {
-      const { id: avatarName, uploadURL } = await fetch('http://localhost:4000/imgFile').then((resp) => resp.json())
+      const { id: avatarName, uploadURL } = await fetch('https://gyujae-movie-web-backend.herokuapp.com/imgFile').then(
+        (resp) => resp.json()
+      )
       const form = new FormData()
       form.append('file', avatar[0], `${meData?.me.user.id || avatarName}`)
       const {
